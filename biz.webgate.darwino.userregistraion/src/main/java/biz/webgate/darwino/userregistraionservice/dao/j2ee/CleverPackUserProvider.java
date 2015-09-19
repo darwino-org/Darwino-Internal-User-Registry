@@ -6,7 +6,6 @@ import java.util.Map;
 import com.darwino.commons.security.acl.UserException;
 import com.darwino.commons.security.acl.UserIdentityMapper;
 import com.darwino.commons.security.acl.UserProvider;
-import com.darwino.commons.util.NotImplementedException;
 
 public class CleverPackUserProvider implements UserProvider {
 

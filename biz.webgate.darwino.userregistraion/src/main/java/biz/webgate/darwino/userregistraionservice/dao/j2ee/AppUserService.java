@@ -27,12 +27,13 @@ import com.darwino.commons.security.acl.UserService;
 import com.darwino.commons.security.acl.impl.UserImpl;
 import com.darwino.commons.util.StringUtil;
 import com.darwino.commons.util.io.StreamUtil;
+import com.darwino.j2ee.application.DarwinoJ2EEApplication;
 import com.darwino.jsonstore.Session;
 
 /**
  * Create a user service for this app.
  * 
- * @author Philippe Riand
+ * @author Christian Guedemann
  */
 public class AppUserService implements UserService {
 
