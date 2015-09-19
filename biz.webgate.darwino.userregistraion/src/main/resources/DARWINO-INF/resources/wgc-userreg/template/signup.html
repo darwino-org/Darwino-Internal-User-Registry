@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h1>
+		Register for CleverPack<br> <small>And get involved</small>
+	</h1>
+</div>
+<div class="row">
+	<div class="col-md-3 sidebar"></div>
+	<form name="registrationForm">
+		<div class="col-md-6">
+			<div class="input-group input-group-sm" ng-show="!submitted">
+				<div class="alert alert-danger" role="alert" ng-show="registrationForm.confirmation.$error.match || registrationForm.email.$error.email">
+					<p ng-show="registrationForm.email.$error.email">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">Error:</span> Please enter a valid email address
+					</p>
+					<p ng-show="registrationForm.confirmation.$error.match">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">Error:</span> Password confirmation doesn't match
+						Password
+					</p>
+				</div>
+
+				<div class="input-group">
+					<label for="firstname" class="sr-only">Firstname</label> <span class="input-group-addon" id="basic-addonFistname">Firstname</span>
+					<input type="text" name="firstname" class="form-control" placeholder="Firstname" ng-model="firstname" required>
+				</div>
+				<div class="input-group">
+					<label for="lastname" class="sr-only">Lastname</label> <span class="input-group-addon" id="basic-addonLastname">Lastname</span>
+					<input type="text" name="lastname" class="form-control" placeholder="Lastname" ng-model="lastname" required>
+				</div>
+				<div class="input-group">
+					<label for="email" class="sr-only">Email</label> <span class="input-group-addon" id="basic-addonEmail">@</span>
+					<input type="text" name="email" class="form-control" placeholder="Email" ng-model="email" required>
+				</div>
+				<div class="input-group">
+					<label for="password" class="sr-only">Password</label> <span class="input-group-addon" id="basic-addonPassword">Password</span>
+					<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="password" required>
+				</div>
+				<div class="input-group">
+					<label for="confirmation" class="sr-only">Confirm</label> <span class="input-group-addon" id="basic-addonConfirm">Confirm</span>
+					<input type="password" name="confirmation" class="form-control" placeholder="Confirm" ng-model="confirmation" required password-match="password">
+				</div>
+				<div class="checkbox">
+					<label> <input type="checkbox" value="accept" ng-model="accept" required> Accept Terms and Conditions
+					</label>
+				</div>
+
+				<button class="btn btn-lg btn-primary" ng-click="register()">Register</button>
+			</div>
+			<div class="input-group input-group-sm" ng-show="submitted">Confirmation email has been sent to your email address. {{email}}</div>
+		</div>
+	</form>
+
+	<div class="col-md-3 sidebar">
+		<div ng-include="'template/upcoming-events.html'"></div>
+	</div>
+</div>
