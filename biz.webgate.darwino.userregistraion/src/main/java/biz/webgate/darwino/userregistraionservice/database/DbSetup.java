@@ -9,7 +9,6 @@ import com.darwino.jsonstore.meta._FieldQuery;
 import com.darwino.jsonstore.meta._FtSearch;
 import com.darwino.jsonstore.meta._Store;
 import com.darwino.platform.DarwinoContext;
-import com.darwino.platform.DarwinoManifest;
 
 public enum DbSetup {
 	INSTNACE;
@@ -17,7 +16,7 @@ public enum DbSetup {
 
 	private String databaseName;
 	
-	public void setupUserStore(DarwinoManifest manifest, _Database db) throws JsonException {
+	public void setupUserStore( _Database db) throws JsonException {
 		this.databaseName = db.getId();
 		_Store store = db.addStore(UP_STORE);
 		store.setLabel("User Profiles");
