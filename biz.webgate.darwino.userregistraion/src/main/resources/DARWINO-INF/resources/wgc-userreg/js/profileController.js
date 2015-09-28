@@ -12,7 +12,7 @@ packFlowControllers.controller('ProfileController', function($scope, $http, $loc
 
 	$scope.$watch('getMyUserProfile', function() {
 		// What's my unique- / user-id if I've authenticated against tomcat???
-		$http.get('api/profileservice?action=getmyprofile').success(function(data, status, headers, config) {
+		$http.get('api/wgcprofileservice?action=getmyprofile').success(function(data, status, headers, config) {
 			$scope.userProfile = data;
 		
 		}).error(function(data, status, headers, config) {
@@ -26,7 +26,7 @@ packFlowControllers.controller('ProfileController', function($scope, $http, $loc
 			if (activationId != undefined && activationId != "") {
 
 				$http({
-					url : 'api/profileservice?action=activateprofile',
+					url : 'api/wgcprofileservice?action=activateprofile',
 					method : "POST",
 					headers : {
 						"Content-Type" : "application/json"
@@ -56,7 +56,7 @@ packFlowControllers.controller('ProfileController', function($scope, $http, $loc
 	});
 
 	$scope.getUserProfile = function() {
-		$http.get('api/profileservice?action=getprofile&id=' + $scope.userProfile.id).success(function(data, status, headers, config) {
+		$http.get('api/wgcprofileservice?action=getprofile&id=' + $scope.userProfile.id).success(function(data, status, headers, config) {
 			if (data.status === "OK") {
 				$scope.userProfile = data.userProfile;
 			} else {
@@ -78,7 +78,7 @@ packFlowControllers.controller('ProfileController', function($scope, $http, $loc
 			if ($scope.profileForm.$valid) {
 				// post to UserProfileServiceAPI
 				$http({
-					url : 'api/profileservice?action=updateprofile&id=' + $scope.userProfile.id,
+					url : 'api/wgcprofileservice?action=updateprofile&id=' + $scope.userProfile.id,
 					method : "POST",
 					headers : {
 						"Content-Type" : "application/json"
@@ -113,7 +113,7 @@ packFlowControllers.controller('ProfileController', function($scope, $http, $loc
 			if ($scope.registrationForm.$valid) {
 				// post to RegistrationServiceAPI
 				$http({
-					url : 'api/profileservice?action=register',
+					url : 'api/wgcprofileservice?action=register',
 					method : "POST",
 					headers : {
 						"Content-Type" : "application/json"

@@ -22,7 +22,7 @@ public class RegisterAction extends AbstractRestAction {
 				}
 				String passwordHash = PasswordFactory.INSTANCE.generateStorngPasswordHash(userProfile.getPassword());
 				userProfile.setPasswordHash(passwordHash);
-				userProfile.initUNID();
+				userProfile.initUnid();
 				UserProfileStorageService.getInstance().saveUserProfile(userProfile);
 				throwPass(context);
 				return true;

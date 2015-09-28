@@ -10,7 +10,7 @@ import com.darwino.commons.json.binding.annotations.JsonEntityScope;
 import com.darwino.commons.json.binding.annotations.JsonObject;
 import com.darwino.commons.util.StringUtil;
 
-@JsonObject(pojoObjectType = "com.cleverpack.app.users.UserProfile",javaFieldPrefix="m_" )
+@JsonObject(pojoObjectType = "biz.webgate.darwino.userregistrationservice.dao.UserProfile")
 public class UserProfile extends PojoBaseImpl {
 
 	private static final String STATUS_NOTCONFIRMED = "NOTCONFIRMED";
@@ -18,188 +18,134 @@ public class UserProfile extends PojoBaseImpl {
 	private static final String REGEX_EMAIL_ADDRESS_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	@JsonEntity(jsonProperty = "firstname")
-	private String m_FirstName;
+	private String firstName;
 	@JsonEntity(jsonProperty = "lastname")
-	private String m_LastName;
+	private String lastName;
 	@JsonEntity(jsonProperty = "email")
-	private String m_Email;
+	private String email;
 	@JsonEntity(jsonProperty = "password", scope = JsonEntityScope.WEB)
-	private String m_Password;
+	private String password;
 	@JsonEntity(jsonProperty = "passwordHash", scope = JsonEntityScope.STORE)
-	private String m_PasswordHash;
+	private String passwordHash;
 	@JsonEntity(jsonProperty = "confirmation", scope = JsonEntityScope.WEB)
-	private String m_Confirmation;
+	private String confirmation;
 	@JsonEntity(jsonProperty = "accept")
-	private boolean m_Accept;
-	private String m_ConfirmationNumber;
-	private String m_Status = STATUS_NOTCONFIRMED;
-	@JsonEntity(jsonProperty = "openQuestionCount")
-	private int m_OpenQuestionCount;
-	@JsonEntity(jsonProperty = "answeredQuestionCount")
-	private int m_AnsweredQuestionCount;
-	@JsonEntity(jsonProperty = "answersCount")
-	private int m_AnswersCount;
-	@JsonEntity(jsonProperty = "sharedLinkCount")
-	private int m_SharedLinkCount;
-	@JsonEntity(jsonProperty = "publicationCount")
-	private int m_PublicationCount;
+	private boolean accept;
+	private String confirmationNumber;
+	private String status = STATUS_NOTCONFIRMED;
 
 	public String getFirstName() {
-		return m_FirstName;
+		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		m_FirstName = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return m_LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		m_LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
-		return m_Email == null ? null : m_Email.toLowerCase().trim();
+		return email == null ? null : email.toLowerCase().trim();
 	}
 
 	public void setEmail(String email) {
-		m_Email = email;
+		this.email = email;
 	}
 
 	public String getPassword() {
-		return m_Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		m_Password = password;
+		this.password = password;
 	}
 
 	public String getConfirmation() {
-		return m_Confirmation;
+		return confirmation;
 	}
 
 	public void setConfirmation(String confirmation) {
-		m_Confirmation = confirmation;
+		this.confirmation = confirmation;
 	}
 
 	public boolean getAccept() {
-		return m_Accept;
+		return accept;
 	}
 
 	public void setAccept(boolean accept) {
-		m_Accept = accept;
+		this.accept = accept;
 	}
 
 	public void buildConfirmationNumber() {
-		m_ConfirmationNumber = UUID.randomUUID().toString();
+		confirmationNumber = UUID.randomUUID().toString();
 	}
 
 	public String getConfirmationNumber() {
-		return m_ConfirmationNumber;
+		return confirmationNumber;
 	}
 
 	public String getStatus() {
-		return m_Status;
+		return status;
 	}
 
 	public void setStatus(String status) {
-		m_Status = status;
-	}
-
-	public int getOpenQuestionCount() {
-		return m_OpenQuestionCount;
-	}
-
-	public void setOpenQuestionCount(int openQuestionCount) {
-		m_OpenQuestionCount = openQuestionCount;
-	}
-
-	public int getAnsweredQuestionCount() {
-		return m_AnsweredQuestionCount;
-	}
-
-	public void setAnsweredQuestionCount(int answeredQuestionCount) {
-		m_AnsweredQuestionCount = answeredQuestionCount;
-	}
-
-	public int getAnswersCount() {
-		return m_AnswersCount;
-	}
-
-	public void setAnswersCount(int answersCount) {
-		m_AnswersCount = answersCount;
-	}
-
-	public int getSharedLinkCount() {
-		return m_SharedLinkCount;
-	}
-
-	public void setSharedLinkCount(int sharedLinkCount) {
-		m_SharedLinkCount = sharedLinkCount;
-	}
-
-	public int getPublicationCount() {
-		return m_PublicationCount;
-	}
-
-	public void setPublicationCount(int publicationCount) {
-		m_PublicationCount = publicationCount;
-	}
-
-	public void setConfirmationNumber(String confirmationNumber) {
-		m_ConfirmationNumber = confirmationNumber;
+		this.status = status;
 	}
 
 	public boolean isValid() throws IllegalArgumentException {
-		//TODO: call with a List of <Messages> which are filed (darwino.commons)
+		// TODO: call with a List of <Messages> which are filed
+		// (darwino.commons)
 		// validate firstname
-		if (StringUtil.isEmpty(StringUtil.trim(m_FirstName))) {
+		if (StringUtil.isEmpty(StringUtil.trim(firstName))) {
 			throw new IllegalArgumentException("Firstname is empty!");
 		}
 		// validate lastname
-		if (StringUtil.isEmpty(StringUtil.trim(m_LastName))) {
+		if (StringUtil.isEmpty(StringUtil.trim(lastName))) {
 			throw new IllegalArgumentException("LastName is empty!");
 		}
 		// validate email
-		if (StringUtil.isEmpty(StringUtil.trim(m_Email))) {
+		if (StringUtil.isEmpty(StringUtil.trim(email))) {
 			throw new IllegalArgumentException("Email is empty!");
-		} else if (!m_Email.matches(REGEX_EMAIL_ADDRESS_PATTERN)) {
+		} else if (!email.matches(REGEX_EMAIL_ADDRESS_PATTERN)) {
 			throw new IllegalArgumentException("Email format exception!");
 		}
 		//
 		// TBD: trim will remove leading and trailing spaces. This will not be
 		// expected for a password I think...
 		// TODO: trim?
-		if (StringUtil.isEmpty(m_Password)) {
+		if (StringUtil.isEmpty(password)) {
 			throw new IllegalArgumentException("password is empty!");
 		}
 		// TBD: password format validation???
 		// TODO: validate password format...
 		// validate confirmation
-		if (StringUtil.isEmpty(m_Confirmation)) {
+		if (StringUtil.isEmpty(confirmation)) {
 			throw new IllegalArgumentException("confirmation is empty!");
-		} else if (!StringUtil.equals(m_Confirmation, m_Password)) {
+		} else if (!StringUtil.equals(confirmation, password)) {
 			throw new IllegalArgumentException("Confirmation does not match with password!");
 		}
-		PasswordFactory.INSTANCE.validatePasswordQuality(m_Password);
+		PasswordFactory.INSTANCE.validatePasswordQuality(password);
 		return true;
 	}
 
 	public String getPasswordHash() {
-		return m_PasswordHash;
+		return passwordHash;
 	}
 
 	public void setPasswordHash(String passwordHash) {
-		m_PasswordHash = passwordHash;
+		this.passwordHash = passwordHash;
 	}
 
 	@Override
 	public String toString() {
-		return "UserProfile [m_UNID=" + getUNID() + ", m_FirstName=" + m_FirstName + ", m_LastName=" + m_LastName + ", m_Email=" + m_Email + ", m_Confirmation=" + m_Confirmation + ", m_Accept="
-				+ m_Accept + ", m_ConfirmationNumber=" + m_ConfirmationNumber + ", m_Status=" + m_Status + ", m_OpenQuestionCount=" + m_OpenQuestionCount + ", m_AnsweredQuestionCount="
-				+ m_AnsweredQuestionCount + ", m_AnswersCount=" + m_AnswersCount + ", m_SharedLinkCount=" + m_SharedLinkCount + ", m_PublicationCount=" + m_PublicationCount + "]";
+		return "UserProfile [m_UNID=" + getUnid() + ", m_FirstName=" + firstName + ", m_LastName=" + lastName + ", m_Email=" + email + ", m_Confirmation=" + confirmation + ", m_Accept=" + accept
+				+ ", m_ConfirmationNumber=" + confirmationNumber + ", m_Status=" + status + "]";
 	}
 
 }

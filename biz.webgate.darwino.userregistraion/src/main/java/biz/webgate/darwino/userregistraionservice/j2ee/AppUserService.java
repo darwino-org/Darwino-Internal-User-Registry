@@ -9,7 +9,7 @@
  * deposited with the U.S. Copyright Office.     
  */
 
-package biz.webgate.darwino.userregistraionservice.dao.j2ee;
+package biz.webgate.darwino.userregistraionservice.j2ee;
 
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +85,7 @@ public class AppUserService implements UserService {
 					return null;
 				}
 				System.out.println("BuildUser");
-				return new UserImpl(up.getUNID(), up.getFirstName() + " " + up.getLastName(), defGroup , null);
+				return new UserImpl(up.getUnid(), up.getFirstName() + " " + up.getLastName(), defGroup , null);
 			} catch (JsonException e) {
 				e.printStackTrace();
 			}

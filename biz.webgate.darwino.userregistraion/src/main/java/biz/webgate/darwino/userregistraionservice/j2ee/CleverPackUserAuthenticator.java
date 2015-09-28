@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.dao.j2ee;
+package biz.webgate.darwino.userregistraionservice.j2ee;
 
 import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
 import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageService;
@@ -28,7 +28,7 @@ public class CleverPackUserAuthenticator implements UserAuthenticator {
 				}
 				System.out.println("USER FOUND");
 				if( PasswordFactory.INSTANCE.validatePassword(password, up.getPasswordHash())) {
-					return up.getUNID();
+					return up.getUnid();
 				}
 			} catch (JsonException e) {
 				e.printStackTrace();

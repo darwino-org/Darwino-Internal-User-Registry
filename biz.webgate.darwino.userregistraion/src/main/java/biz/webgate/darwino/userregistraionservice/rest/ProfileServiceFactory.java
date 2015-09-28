@@ -19,9 +19,9 @@ import com.darwino.commons.services.rest.RestServiceFactory;
 
 public class ProfileServiceFactory extends RestServiceFactory {
 
+	
 	public ProfileServiceFactory() {
-		super("api/profileservice");
-		// TODO Auto-generated constructor stub
+		super("api/wgcprofileservice");
 	}
 
 	public class UserProfileService extends HttpService {

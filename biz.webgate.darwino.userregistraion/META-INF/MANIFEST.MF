@@ -5,12 +5,12 @@ Bundle-SymbolicName: biz.webgate.darwino.dwo-3rdparty-UserRegistrationSe
  rvice
 Bundle-Version: 0.8.0.qualifier
 DARWINO_VERSION: 0.8.0-SNAPSHOT
-Export-Package: biz.webgate.darwino.userregistraionservice.dao.j2ee;vers
- ion="0.8.0",biz.webgate.darwino.userregistraionservice.dao;version="0.8
- .0",biz.webgate.darwino.userregistraionservice.database;version="0.8.0"
- ,biz.webgate.darwino.userregistraionservice.rest.action;version="0.8.0"
- ,biz.webgate.darwino.userregistraionservice.rest;version="0.8.0",biz.we
- bgate.darwino.userregistraionservice.util;version="0.8.0"
+Export-Package: biz.webgate.darwino.userregistraionservice.dao;version="0.8.0",
+ biz.webgate.darwino.userregistraionservice.database;version="0.8.0",
+ biz.webgate.darwino.userregistraionservice.j2ee;version="0.8.0",
+ biz.webgate.darwino.userregistraionservice.rest;version="0.8.0",
+ biz.webgate.darwino.userregistraionservice.rest.action;version="0.8.0",
+ biz.webgate.darwino.userregistraionservice.util;version="0.8.0"
 Include-Resource: DARWINO-INF/resources/wgc-userreg/js/profileController
  .js=src/main/resources/DARWINO-INF/resources/wgc-userreg/js/profileCont
  roller.js,DARWINO-INF/resources/wgc-userreg/template/signup.html=src/ma

@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.dao.j2ee;
+package biz.webgate.darwino.userregistraionservice.j2ee;
 
 import java.util.List;
 import java.util.Map;
@@ -31,6 +31,12 @@ public class CleverPackUserProvider implements UserProvider {
 	public List<Map<String, Object>> typeAhead(String query, String[] attributes, int skip, int limit, Map<String, Object> options) throws UserException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean isAvailable() throws UserException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
