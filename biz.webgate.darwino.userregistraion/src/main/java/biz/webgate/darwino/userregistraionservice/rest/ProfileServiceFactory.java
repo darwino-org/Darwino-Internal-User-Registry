@@ -22,6 +22,7 @@ public class ProfileServiceFactory extends RestServiceFactory {
 	
 	public ProfileServiceFactory() {
 		super("api/wgcprofileservice");
+		System.out.println("PSF loaded");
 	}
 
 	public class UserProfileService extends HttpService {
