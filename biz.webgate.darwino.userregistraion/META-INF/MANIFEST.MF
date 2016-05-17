@@ -1,23 +1,23 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: UserRegistrationService
+Bundle-Name: userregistry
 Bundle-SymbolicName: biz.webgate.darwino.dwo-3rdparty-UserRegistrationSe
  rvice
 Bundle-Version: 0.8.0.qualifier
 DARWINO_VERSION: 0.8.0-SNAPSHOT
-Export-Package: biz.webgate.darwino.userregistrationservice.actions;uses:
- ="biz.webgate.darwino.userregistrationservice,biz.webgate.darwino.userre
- gistraionservice.dao,biz.webgate.darwino.userregistrationservice.setup";
- version="0.8.0",biz.webgate.darwino.userregistrationservice.dao;uses:="b
- iz.webgate.darwino.userregistrationservice";version="0.8.0",biz.webgate.
- darwino.userregistrationservice.j2ee;version="0.8.0",biz.webgate.darwino
- .userregistrationservice.plugin;version="0.8.0",biz.webgate.darwino.user
+Export-Package: biz.webgate.darwino.userregistry.actions;uses:
+ ="biz.webgate.darwino.userregistry,biz.webgate.darwino.userre
+ gistraionservice.dao,biz.webgate.darwino.userregistry.setup";
+ version="0.8.0",biz.webgate.darwino.userregistry.dao;uses:="b
+ iz.webgate.darwino.userregistry";version="0.8.0",biz.webgate.
+ darwino.userregistry.j2ee;version="0.8.0",biz.webgate.darwino
+ .userregistry.plugin;version="0.8.0",biz.webgate.darwino.user
  registraionservice.rest.action;uses:="biz.webgate.darwino.userregistrai
  onservice.rest";version="0.8.0",biz.webgate.darwino.userregistraionserv
- ice.rest;uses:="biz.webgate.darwino.userregistrationservice.dao";version
- ="0.8.0",biz.webgate.darwino.userregistrationservice.setup;version="0.8.
- 0",biz.webgate.darwino.userregistrationservice;uses:="biz.webgate.darwin
- o.userregistrationservice.dao";version="0.8.0",biz.webgate.darwino.userr
+ ice.rest;uses:="biz.webgate.darwino.userregistry.dao";version
+ ="0.8.0",biz.webgate.darwino.userregistry.setup;version="0.8.
+ 0",biz.webgate.darwino.userregistry;uses:="biz.webgate.darwin
+ o.userregistry.dao";version="0.8.0",biz.webgate.darwino.userr
  egistraionservice.util;version="0.8.0"
 Include-Resource: DARWINO-INF/resources/wgc-userreg/js/profileController
  .js=src/main/resources/DARWINO-INF/resources/wgc-userreg/js/profileCont

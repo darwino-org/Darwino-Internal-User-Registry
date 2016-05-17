@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.dao;
+package biz.webgate.darwino.userregistry.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import com.darwino.commons.json.binding.annotations.JsonEntityScope;
 import com.darwino.commons.json.binding.annotations.JsonObject;
 import com.darwino.commons.util.StringUtil;
 
-import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistry.util.PasswordFactory;
 
-@JsonObject(pojoObjectType = "biz.webgate.darwino.userregistrationservice.dao.UserProfile")
+@JsonObject(pojoObjectType = "biz.webgate.darwino.userregistry.dao.UserProfile")
 public class UserProfile extends PojoBaseImpl {
 
 	private static final String STATUS_NOTCONFIRMED = "NOTCONFIRMED";

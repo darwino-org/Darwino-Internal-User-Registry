@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.j2ee;
+package biz.webgate.darwino.userregistry.j2ee;
 
 import java.util.List;
 import java.util.Map;
@@ -7,7 +7,7 @@ import com.darwino.commons.security.acl.UserException;
 import com.darwino.commons.security.acl.UserIdentityMapper;
 import com.darwino.commons.security.acl.UserProvider;
 
-public class CleverPackUserProvider implements UserProvider {
+public class InternalUserProvider implements UserProvider {
 
 	@Override
 	public String getId() {

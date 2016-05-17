@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.util;
+package biz.webgate.darwino.userregistry.util;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;

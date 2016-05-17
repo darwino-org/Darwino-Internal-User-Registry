@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.j2ee;
+package biz.webgate.darwino.userregistry.j2ee;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.UserAuthenticator;
@@ -7,11 +7,11 @@ import com.darwino.commons.util.io.StreamUtil;
 import com.darwino.j2ee.application.DarwinoJ2EEApplication;
 import com.darwino.jsonstore.Session;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
-import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
-import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistry.dao.UserProfile;
+import biz.webgate.darwino.userregistry.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistry.util.PasswordFactory;
 
-public class CleverPackUserAuthenticator implements UserAuthenticator {
+public class InternalUserAuthenticator implements UserAuthenticator {
 
 	@Override
 	public String authenticate(String userName, String password) throws UserException {

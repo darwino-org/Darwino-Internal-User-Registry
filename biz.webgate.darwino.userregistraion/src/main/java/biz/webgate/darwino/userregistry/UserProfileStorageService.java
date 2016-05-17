@@ -1,9 +1,9 @@
-package biz.webgate.darwino.userregistrationservice;
+package biz.webgate.darwino.userregistry;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.jsonstore.Session;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistry.dao.UserProfile;
 
 public interface UserProfileStorageService {
 

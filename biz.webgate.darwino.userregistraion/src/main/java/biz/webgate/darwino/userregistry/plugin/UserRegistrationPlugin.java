@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.plugin;
+package biz.webgate.darwino.userregistry.plugin;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import com.darwino.commons.security.acl.UserService;
 import com.darwino.commons.services.HttpServiceFactory;
 import com.darwino.commons.util.Version;
 
-import biz.webgate.darwino.userregistrationservice.j2ee.AppUserService;
-import biz.webgate.darwino.userregistrationservice.rest.ProfileServiceFactory;
+import biz.webgate.darwino.userregistry.j2ee.AppUserService;
+import biz.webgate.darwino.userregistry.rest.ProfileServiceFactory;
 
 public class UserRegistrationPlugin implements Plugin {
 
@@ -29,7 +29,7 @@ public class UserRegistrationPlugin implements Plugin {
 
 	@Override
 	public String getName() {
-		return "WGC UserRegistrationClass";
+		return "UserRegistrationClass";
 	}
 
 	@Override
@@ -41,5 +41,5 @@ public class UserRegistrationPlugin implements Plugin {
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
 }

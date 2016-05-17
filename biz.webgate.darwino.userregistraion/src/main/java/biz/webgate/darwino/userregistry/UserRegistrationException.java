@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice;
+package biz.webgate.darwino.userregistry;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.actions;
+package biz.webgate.darwino.userregistry.actions;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -7,11 +7,11 @@ import java.util.List;
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.User;
 
-import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
-import biz.webgate.darwino.userregistrationservice.UserRegistrationException;
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
-import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistry.UserProfileStorageService;
+import biz.webgate.darwino.userregistry.UserRegistrationException;
+import biz.webgate.darwino.userregistry.dao.UserProfile;
+import biz.webgate.darwino.userregistry.setup.UserRegistrationSetupService;
+import biz.webgate.darwino.userregistry.util.PasswordFactory;
 
 public class RegisterNewUser {
 

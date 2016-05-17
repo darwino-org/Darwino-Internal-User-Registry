@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.rest;
+package biz.webgate.darwino.userregistry.rest;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -7,7 +7,7 @@ import java.util.List;
 import com.darwino.commons.json.binding.annotations.JsonEntity;
 import com.darwino.commons.json.binding.annotations.JsonObject;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistry.dao.UserProfile;
 
 @JsonObject(pojoObjectType = "requestResult")
 public class RequestResult {

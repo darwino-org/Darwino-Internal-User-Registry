@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>biz.webgate.darwino</groupId>
-	<artifactId>dwo-3rdparty-UserRegistrationService</artifactId>
+	<artifactId>dwo-3rdparty-userregistry</artifactId>
 	<version>0.8.0-SNAPSHOT</version>
-	<name>UserRegistrationService</name>
+	<name>userregistry</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.darwino</groupId>

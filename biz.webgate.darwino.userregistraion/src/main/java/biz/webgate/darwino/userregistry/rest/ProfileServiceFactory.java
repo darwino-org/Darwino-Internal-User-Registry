@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistrationservice.rest;
+package biz.webgate.darwino.userregistry.rest;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ProfileServiceFactory extends RestServiceFactory {
 
 	
 	public ProfileServiceFactory() {
-		super("api/wgcprofileservice");
+		super("api/profileservice");
 		System.out.println("PSF loaded");
 	}
 

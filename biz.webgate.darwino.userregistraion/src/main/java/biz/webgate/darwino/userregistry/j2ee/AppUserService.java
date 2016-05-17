@@ -9,7 +9,7 @@
  * deposited with the U.S. Copyright Office.     
  */
 
-package biz.webgate.darwino.userregistrationservice.j2ee;
+package biz.webgate.darwino.userregistry.j2ee;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +27,8 @@ import com.darwino.commons.util.io.StreamUtil;
 import com.darwino.j2ee.application.DarwinoJ2EEApplication;
 import com.darwino.jsonstore.Session;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
-import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistry.dao.UserProfile;
+import biz.webgate.darwino.userregistry.dao.UserProfileStorageServiceImpl;
 
 /**
  * Create a user service for this app.
@@ -37,8 +37,8 @@ import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageService
  */
 public class AppUserService implements UserService {
 
-	private final static UserProvider m_CleverPackUserProvider = new CleverPackUserProvider();
-	private final static UserAuthenticator m_ClverPackerUserAuthenticator = new CleverPackUserAuthenticator();
+	private final static UserProvider internalUserProvider = new InternalUserProvider();
+	private final static UserAuthenticator internalUserAuthenticator = new InternalUserAuthenticator();
 	
 	@Override
 	public Map<String, User> findUsers(String[] ids) throws UserException {
@@ -55,7 +55,7 @@ public class AppUserService implements UserService {
 	@Override
 	public UserAuthenticator getAuthenticator(String arg0) throws UserException {
 		if (StringUtil.isEmpty(arg0)) {
-			return m_ClverPackerUserAuthenticator;
+			return internalUserAuthenticator;
 		}
 		return null;
 	}
@@ -63,7 +63,7 @@ public class AppUserService implements UserService {
 	@Override
 	public UserProvider getProvider(String arg0) throws UserException {
 		if (StringUtil.isEmpty(arg0)) {
-			return m_CleverPackUserProvider;
+			return internalUserProvider;
 		}
 		return null;
 	}
@@ -99,19 +99,17 @@ public class AppUserService implements UserService {
 
 	@Override
 	public User findUserByLoginId(String arg0) throws UserException {
-		// TODO Auto-generated method stub
+		// TODO SBA: What does loginId mean? email & unid are checked above, is this the confirmationID?
 		return null;
 	}
 
 	@Override
 	public List<Map<String, Object>> query(String query, String[] attributes, int skip, int limit, Map<String, Object> options) throws UserException {
-		// TODO Auto-generated method stub
-		return null;
+		return internalUserProvider.query(query, attributes, skip, limit, options);
 	}
 
 	@Override
 	public List<Map<String, Object>> typeAhead(String query, String[] attributes, int skip, int limit, Map<String, Object> options) throws UserException {
-		// TODO Auto-generated method stub
-		return null;
+		return internalUserProvider.typeAhead(query, attributes, skip, limit, options);
 	}
 }
