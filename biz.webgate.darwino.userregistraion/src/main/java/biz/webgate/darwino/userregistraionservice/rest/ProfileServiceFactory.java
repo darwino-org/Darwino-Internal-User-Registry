@@ -1,9 +1,13 @@
 package biz.webgate.darwino.userregistraionservice.rest;
 
+import java.io.IOException;
 import java.util.List;
 
-import biz.webgate.darwino.userregistraionservice.rest.action.AbstractRestAction;
-
+import com.darwino.commons.json.JsonException;
+import com.darwino.commons.json.binding.JsonPojoSerializer;
+import com.darwino.commons.json.binding.annotations.JsonEntityScope;
+import com.darwino.commons.json.serialization.JsonWriter;
+import com.darwino.commons.model.PojoJsonIntrospectorAnotationImpl;
 import com.darwino.commons.services.HttpService;
 import com.darwino.commons.services.HttpServiceContext;
 import com.darwino.commons.services.rest.RestServiceBinder;
@@ -35,13 +39,24 @@ public class ProfileServiceFactory extends RestServiceFactory {
 			try {
 				ProfileActionBinding userProfileAction = ProfileActionBinding.valueOf(action.toUpperCase());
 				System.out.println("action: " + action + " userProfileAction: " + userProfileAction);
-				userProfileAction.executeAction(context);
-			} catch (IllegalArgumentException e) {
-				AbstractRestAction.throwError(context, "IllegalArgumentException", e);
-				//HttpServiceError.errorUnsupportedMethod(action);
-				//&HttpServiceError.error500(e);
+				RequestResult result = userProfileAction.executeAction(context);
+				processToJson(context, result);
+			} catch (Exception ex){
+				try {
+					context.emitException(ex);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			
 		}
+		protected void processToJson(HttpServiceContext context, Object object) throws JsonException, IOException {
+			JsonWriter jsonWriter = context.getJsonWriter();
+			JsonPojoSerializer jsonPojoSerializer = new JsonPojoSerializer( PojoJsonIntrospectorAnotationImpl.get());
+			jsonPojoSerializer.process2JSON(jsonWriter, object, JsonEntityScope.WEB);
+			jsonWriter.close();
+		}
+
 	}
 
 	@Override

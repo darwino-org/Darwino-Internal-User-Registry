@@ -1,5 +1,7 @@
 package biz.webgate.darwino.userregistraionservice.setup;
 
+import org.passay.PasswordValidator;
+
 public interface UserRegistrationSetupService {
 
 	public String getDatabaseName();
@@ -13,4 +15,6 @@ public interface UserRegistrationSetupService {
 	public String getRegistrationInstruction();
 
 	public String getLinkToTermsAndConditions();
+
+	public PasswordValidator getPasswordValidator();
 }

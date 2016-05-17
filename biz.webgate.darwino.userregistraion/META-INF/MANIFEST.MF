@@ -3,24 +3,28 @@ Bundle-ManifestVersion: 2
 Bundle-Name: UserRegistrationService
 Bundle-SymbolicName: biz.webgate.darwino.dwo-3rdparty-UserRegistrationSe
  rvice
-Bundle-Version: 0.8.0.
+Bundle-Version: 0.8.0.qualifier
 DARWINO_VERSION: 0.8.0-SNAPSHOT
-Export-Package: biz.webgate.darwino.userregistraionservice.dao;version="
- 0.8.0",biz.webgate.darwino.userregistraionservice.j2ee;version="0.8.0",
- biz.webgate.darwino.userregistraionservice.rest.action;version="0.8.0",
- biz.webgate.darwino.userregistraionservice.rest;version="0.8.0",biz.web
- gate.darwino.userregistraionservice.setup;version="0.8.0",biz.webgate.d
- arwino.userregistraionservice.util;version="0.8.0"
+Export-Package: biz.webgate.darwino.userregistraionservice.actions;uses:
+ ="biz.webgate.darwino.userregistraionservice,biz.webgate.darwino.userre
+ gistraionservice.dao,biz.webgate.darwino.userregistraionservice.setup";
+ version="0.8.0",biz.webgate.darwino.userregistraionservice.dao;uses:="b
+ iz.webgate.darwino.userregistraionservice";version="0.8.0",biz.webgate.
+ darwino.userregistraionservice.j2ee;version="0.8.0",biz.webgate.darwino
+ .userregistraionservice.plugin;version="0.8.0",biz.webgate.darwino.user
+ registraionservice.rest.action;uses:="biz.webgate.darwino.userregistrai
+ onservice.rest";version="0.8.0",biz.webgate.darwino.userregistraionserv
+ ice.rest;uses:="biz.webgate.darwino.userregistraionservice.dao";version
+ ="0.8.0",biz.webgate.darwino.userregistraionservice.setup;version="0.8.
+ 0",biz.webgate.darwino.userregistraionservice;uses:="biz.webgate.darwin
+ o.userregistraionservice.dao";version="0.8.0",biz.webgate.darwino.userr
+ egistraionservice.util;version="0.8.0"
 Include-Resource: DARWINO-INF/resources/wgc-userreg/js/profileController
  .js=src/main/resources/DARWINO-INF/resources/wgc-userreg/js/profileCont
  roller.js,DARWINO-INF/resources/wgc-userreg/template/signup.html=src/ma
  in/resources/DARWINO-INF/resources/wgc-userreg/template/signup.html,MET
- A-INF/services/com.darwino.commons.security.acl.UserService=src/main/re
- sources/META-INF/services/com.darwino.commons.security.acl.UserService,
- META-INF/services/com.darwino.commons.services.HttpServiceFactory=src/m
- ain/resources/META-INF/services/com.darwino.commons.services.HttpServic
- eFactory
-Originally-Created-By: Maven Integration for Eclipse
+ A-INF/services/com.darwino.commons.platform.Plugin=src/main/resources/M
+ ETA-INF/services/com.darwino.commons.platform.Plugin
 Private-Package: DARWINO-INF.resources.wgc-userreg.js,DARWINO-INF.resour
  ces.wgc-userreg.template
 Require-Bundle: com.darwino.domino.platform;resolution:=optional

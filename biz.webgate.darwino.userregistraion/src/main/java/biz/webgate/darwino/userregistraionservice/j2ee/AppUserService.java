@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageService;
+import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageServiceImpl;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.User;
@@ -77,9 +77,9 @@ public class AppUserService implements UserService {
 		try {
 			session = DarwinoJ2EEApplication.get().getLocalJsonDBServer().createSystemSession("");
 			try {
-				up = UserProfileStorageService.getInstance().getUserProfileByEMail(id, session);
+				up = UserProfileStorageServiceImpl.getInstance().getUserProfileByEMail(id, session);
 				if (up == null) {
-					up = UserProfileStorageService.getInstance().getUserProfileByUNID(id, session);
+					up = UserProfileStorageServiceImpl.getInstance().getUserProfileByUNID(id, session);
 				}
 				if (up == null) {
 					return null;

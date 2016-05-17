@@ -1,6 +1,11 @@
 package biz.webgate.darwino.userregistraionservice.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import org.passay.PasswordData;
+import org.passay.PasswordValidator;
 
 import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
 
@@ -98,40 +103,38 @@ public class UserProfile extends PojoBaseImpl {
 		this.status = status;
 	}
 
-	public boolean isValid() throws IllegalArgumentException {
-		// TODO: call with a List of <Messages> which are filed
-		// (darwino.commons)
-		// validate firstname
+	public List<String> validateUser(PasswordValidator passwordValidator) throws IllegalArgumentException {
+		List<String> messages = new ArrayList<String>();
 		if (StringUtil.isEmpty(StringUtil.trim(firstName))) {
-			throw new IllegalArgumentException("Firstname is empty!");
+			messages.add("Firstname is empty!");
 		}
 		// validate lastname
 		if (StringUtil.isEmpty(StringUtil.trim(lastName))) {
-			throw new IllegalArgumentException("LastName is empty!");
+			messages.add("LastName is empty!");
 		}
 		// validate email
 		if (StringUtil.isEmpty(StringUtil.trim(email))) {
-			throw new IllegalArgumentException("Email is empty!");
+			messages.add("Email is empty!");
 		} else if (!email.matches(REGEX_EMAIL_ADDRESS_PATTERN)) {
-			throw new IllegalArgumentException("Email format exception!");
+			messages.add("Email format exception!");
 		}
 		//
-		// TBD: trim will remove leading and trailing spaces. This will not be
-		// expected for a password I think...
 		// TODO: trim?
 		if (StringUtil.isEmpty(password)) {
-			throw new IllegalArgumentException("password is empty!");
+			messages.add("Password is empty!");
 		}
-		// TBD: password format validation???
 		// TODO: validate password format...
-		// validate confirmation
 		if (StringUtil.isEmpty(confirmation)) {
-			throw new IllegalArgumentException("confirmation is empty!");
+			messages.add("confirmation is empty!");
 		} else if (!StringUtil.equals(confirmation, password)) {
-			throw new IllegalArgumentException("Confirmation does not match with password!");
+			messages.add("Confirmation does not match with password!");
 		}
-		PasswordFactory.INSTANCE.validatePasswordQuality(password);
-		return true;
+		if (messages.isEmpty()) {
+			PasswordData pw = new PasswordData(password);
+			pw.setUsername(email);
+			PasswordFactory.INSTANCE.validatePasswordQuality(pw, passwordValidator);
+		}
+		return messages;
 	}
 
 	public String getPasswordHash() {

@@ -4,7 +4,9 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -16,6 +18,7 @@ import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 import org.passay.RuleResult;
 import org.passay.UppercaseCharacterRule;
+import org.passay.UsernameRule;
 import org.passay.WhitespaceRule;
 
 public enum PasswordFactory {
@@ -75,30 +78,34 @@ public enum PasswordFactory {
 		return bytes;
 	}
 
-	public void validatePasswordQuality(final String password) {
-		PasswordValidator validator = new PasswordValidator(Arrays.asList(
-				// length between 8 and 16 characters
-				new LengthRule(8, 16),
-
-				// at least one upper-case character
-				new UppercaseCharacterRule(1),
-
-				// at least one lower-case character
-				new LowercaseCharacterRule(1),
-
-				// at least one digit character
-				new DigitCharacterRule(1),
-
-				// no whitespace
-				new WhitespaceRule()));
-
-		RuleResult result = validator.validate(new PasswordData(password));
-		if (!result.isValid()) {
-			StringBuilder sbMessage = new StringBuilder();
-			for (String msg : validator.getMessages(result)) {
-				sbMessage.append(msg + "\n");
-			}
-			throw new IllegalArgumentException(sbMessage.toString());
+	public List<String> validatePasswordQuality(final PasswordData pw, PasswordValidator validator) {
+		List<String> messages = new ArrayList<String>();
+		if (validator == null) {
+			validator = DEFAULT_PASSWORD_VALIDATOR;
 		}
+		RuleResult result = validator.validate(pw);
+		if (!result.isValid()) {
+			for (String msg : validator.getMessages(result)) {
+				messages.add(msg);
+			}
+		}
+		return messages;
 	}
+
+	public final static PasswordValidator DEFAULT_PASSWORD_VALIDATOR = new PasswordValidator(Arrays.asList(
+	// length between 8 and 16 characters
+			new LengthRule(8, 16),
+
+			// at least one upper-case character
+			new UppercaseCharacterRule(1),
+
+			// at least one lower-case character
+			new LowercaseCharacterRule(1),
+
+			// at least one digit character
+			new DigitCharacterRule(1),
+
+			// no whitespace
+			new WhitespaceRule(), new UsernameRule()));
+
 }

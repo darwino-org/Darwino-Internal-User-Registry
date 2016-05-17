@@ -1,7 +1,7 @@
 package biz.webgate.darwino.userregistraionservice.j2ee;
 
 import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageService;
+import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageServiceImpl;
 import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
 
 import com.darwino.commons.json.JsonException;
@@ -19,9 +19,9 @@ public class CleverPackUserAuthenticator implements UserAuthenticator {
 		try {
 			session = DarwinoJ2EEApplication.get().getLocalJsonDBServer().createSystemSession("");
 			try {
-				UserProfile up = UserProfileStorageService.getInstance().getUserProfileByEMail(userName, session);
+				UserProfile up = UserProfileStorageServiceImpl.getInstance().getUserProfileByEMail(userName, session);
 				if (up == null) {
-					up = UserProfileStorageService.getInstance().getUserProfileByUNID(userName, session);
+					up = UserProfileStorageServiceImpl.getInstance().getUserProfileByUNID(userName, session);
 				}
 				if (up == null) {
 					return null;
