@@ -1,16 +1,13 @@
 package biz.webgate.darwino.userregistrationservice.rest;
 
+import com.darwino.commons.services.HttpServiceContext;
+
 import biz.webgate.darwino.userregistrationservice.rest.action.ActivationAction;
 import biz.webgate.darwino.userregistrationservice.rest.action.GetMyProfileAction;
 import biz.webgate.darwino.userregistrationservice.rest.action.GetProfileAction;
 import biz.webgate.darwino.userregistrationservice.rest.action.IRestAction;
 import biz.webgate.darwino.userregistrationservice.rest.action.RegisterAction;
 import biz.webgate.darwino.userregistrationservice.rest.action.UpdateProfileAction;
-
-import java.io.IOException;
-
-import com.darwino.commons.json.JsonException;
-import com.darwino.commons.services.HttpServiceContext;
 
 public enum ProfileActionBinding {
 	GETMYPROFILE(new GetMyProfileAction()), GETPROFILE(new GetProfileAction()), UPDATEPROFILE(new UpdateProfileAction()), ACTIVATE(new ActivationAction()), REGISTER(new RegisterAction());

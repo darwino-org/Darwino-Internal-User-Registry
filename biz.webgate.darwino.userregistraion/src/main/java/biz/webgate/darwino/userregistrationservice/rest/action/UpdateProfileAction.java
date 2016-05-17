@@ -3,13 +3,13 @@ package biz.webgate.darwino.userregistrationservice.rest.action;
 import java.io.IOException;
 import java.util.List;
 
+import com.darwino.commons.json.JsonException;
+import com.darwino.commons.services.HttpServiceContext;
+
 import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
 import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
 import biz.webgate.darwino.userregistrationservice.rest.RequestResult;
 import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
-
-import com.darwino.commons.json.JsonException;
-import com.darwino.commons.services.HttpServiceContext;
 
 public class UpdateProfileAction extends AbstractRestAction {
 

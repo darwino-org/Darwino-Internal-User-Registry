@@ -1,8 +1,5 @@
 package biz.webgate.darwino.userregistrationservice.dao;
 
-import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
-import biz.webgate.darwino.userregistrationservice.setup.DbSetup;
-
 import com.darwino.commons.json.JsonException;
 import com.darwino.jsonstore.Cursor;
 import com.darwino.jsonstore.Database;
@@ -11,6 +8,9 @@ import com.darwino.jsonstore.Store;
 import com.darwino.jsonstore.callback.CursorEntry;
 import com.darwino.jsonstore.pojo.AbstractPojoStorageService;
 import com.darwino.platform.DarwinoContext;
+
+import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
+import biz.webgate.darwino.userregistrationservice.setup.DbSetup;
 
 public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<UserProfile> implements UserProfileStorageService {
 	/**

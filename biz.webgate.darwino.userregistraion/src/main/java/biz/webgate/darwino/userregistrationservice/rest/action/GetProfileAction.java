@@ -2,12 +2,12 @@ package biz.webgate.darwino.userregistrationservice.rest.action;
 
 import java.io.IOException;
 
+import com.darwino.commons.json.JsonException;
+import com.darwino.commons.services.HttpServiceContext;
+
 import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
 import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
 import biz.webgate.darwino.userregistrationservice.rest.RequestResult;
-
-import com.darwino.commons.json.JsonException;
-import com.darwino.commons.services.HttpServiceContext;
 
 public class GetProfileAction extends AbstractRestAction{
 

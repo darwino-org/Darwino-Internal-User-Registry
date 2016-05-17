@@ -15,9 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
-import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
-
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.User;
 import com.darwino.commons.security.acl.UserAuthenticator;
@@ -29,6 +26,9 @@ import com.darwino.commons.util.StringUtil;
 import com.darwino.commons.util.io.StreamUtil;
 import com.darwino.j2ee.application.DarwinoJ2EEApplication;
 import com.darwino.jsonstore.Session;
+
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
 
 /**
  * Create a user service for this app.

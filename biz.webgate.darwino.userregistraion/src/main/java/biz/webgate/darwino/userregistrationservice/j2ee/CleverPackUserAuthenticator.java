@@ -1,15 +1,15 @@
 package biz.webgate.darwino.userregistrationservice.j2ee;
 
-import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
-import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
-import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
-
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.UserAuthenticator;
 import com.darwino.commons.security.acl.UserException;
 import com.darwino.commons.util.io.StreamUtil;
 import com.darwino.j2ee.application.DarwinoJ2EEApplication;
 import com.darwino.jsonstore.Session;
+
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 public class CleverPackUserAuthenticator implements UserAuthenticator {
 

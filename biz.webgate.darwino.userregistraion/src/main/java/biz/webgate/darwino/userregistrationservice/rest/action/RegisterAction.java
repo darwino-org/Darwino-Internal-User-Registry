@@ -3,12 +3,12 @@ package biz.webgate.darwino.userregistrationservice.rest.action;
 import java.util.Arrays;
 import java.util.List;
 
+import com.darwino.commons.services.HttpServiceContext;
+
 import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
 import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
 import biz.webgate.darwino.userregistrationservice.rest.RequestResult;
 import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
-
-import com.darwino.commons.services.HttpServiceContext;
 
 public class RegisterAction extends AbstractRestAction {
 

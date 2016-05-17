@@ -7,13 +7,13 @@ import java.util.UUID;
 import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 
-import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
-
 import com.darwino.commons.json.binding.PojoBaseImpl;
 import com.darwino.commons.json.binding.annotations.JsonEntity;
 import com.darwino.commons.json.binding.annotations.JsonEntityScope;
 import com.darwino.commons.json.binding.annotations.JsonObject;
 import com.darwino.commons.util.StringUtil;
+
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 @JsonObject(pojoObjectType = "biz.webgate.darwino.userregistrationservice.dao.UserProfile")
 public class UserProfile extends PojoBaseImpl {

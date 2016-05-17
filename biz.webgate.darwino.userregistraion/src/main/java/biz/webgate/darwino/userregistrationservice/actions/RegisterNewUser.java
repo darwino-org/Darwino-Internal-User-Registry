@@ -4,14 +4,14 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
+import com.darwino.commons.json.JsonException;
+import com.darwino.commons.security.acl.User;
+
 import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
 import biz.webgate.darwino.userregistrationservice.UserRegistrationException;
 import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
 import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
 import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
-
-import com.darwino.commons.json.JsonException;
-import com.darwino.commons.security.acl.User;
 
 public class RegisterNewUser {
 
