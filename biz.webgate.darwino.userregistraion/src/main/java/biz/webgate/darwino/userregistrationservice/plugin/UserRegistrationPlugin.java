@@ -1,9 +1,9 @@
-package biz.webgate.darwino.userregistraionservice.plugin;
+package biz.webgate.darwino.userregistrationservice.plugin;
 
 import java.util.List;
 
-import biz.webgate.darwino.userregistraionservice.j2ee.AppUserService;
-import biz.webgate.darwino.userregistraionservice.rest.ProfileServiceFactory;
+import biz.webgate.darwino.userregistrationservice.j2ee.AppUserService;
+import biz.webgate.darwino.userregistrationservice.rest.ProfileServiceFactory;
 
 import com.darwino.commons.platform.Plugin;
 import com.darwino.commons.security.acl.UserService;

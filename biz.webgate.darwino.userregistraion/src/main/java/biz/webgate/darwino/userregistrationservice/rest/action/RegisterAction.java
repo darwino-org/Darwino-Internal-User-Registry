@@ -1,12 +1,12 @@
-package biz.webgate.darwino.userregistraionservice.rest.action;
+package biz.webgate.darwino.userregistrationservice.rest.action;
 
 import java.util.Arrays;
 import java.util.List;
 
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageServiceImpl;
-import biz.webgate.darwino.userregistraionservice.rest.RequestResult;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistrationservice.rest.RequestResult;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 import com.darwino.commons.services.HttpServiceContext;
 
@@ -21,7 +21,7 @@ public class RegisterAction extends AbstractRestAction {
 				if (UserProfileStorageServiceImpl.getInstance().userIsAlreadyRegistred(userProfile)) {
 					return RequestResult.buildProfileValidationAnswer(userProfile, Arrays.asList("A User with this e-mail adress is already registred."));
 				}
-				String passwordHash = PasswordFactory.INSTANCE.generateStorngPasswordHash(userProfile.getPassword());
+				String passwordHash = PasswordFactory.INSTANCE.generateStrongPasswordHash(userProfile.getPassword());
 				userProfile.setPasswordHash(passwordHash);
 				userProfile.initUnid();
 				UserProfileStorageServiceImpl.getInstance().saveUserProfile(userProfile);

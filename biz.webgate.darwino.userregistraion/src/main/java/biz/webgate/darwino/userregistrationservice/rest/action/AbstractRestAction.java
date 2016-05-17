@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.rest.action;
+package biz.webgate.darwino.userregistrationservice.rest.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;

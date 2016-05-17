@@ -1,8 +1,8 @@
-package biz.webgate.darwino.userregistraionservice.j2ee;
+package biz.webgate.darwino.userregistrationservice.j2ee;
 
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageServiceImpl;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.UserAuthenticator;

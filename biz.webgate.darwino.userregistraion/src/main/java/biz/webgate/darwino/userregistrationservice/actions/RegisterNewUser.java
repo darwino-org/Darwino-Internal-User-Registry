@@ -1,14 +1,14 @@
-package biz.webgate.darwino.userregistraionservice.actions;
+package biz.webgate.darwino.userregistrationservice.actions;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
-import biz.webgate.darwino.userregistraionservice.UserProfileStorageService;
-import biz.webgate.darwino.userregistraionservice.UserRegistrationException;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
+import biz.webgate.darwino.userregistrationservice.UserRegistrationException;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.User;
@@ -31,7 +31,7 @@ public class RegisterNewUser {
 				if (storageService.userIsAlreadyRegistred(up)) {
 					throw new UserRegistrationException("A User with this e-mail adress is already registred.", messages, true);
 				}
-				String passwordHash = PasswordFactory.INSTANCE.generateStorngPasswordHash(up.getPassword());
+				String passwordHash = PasswordFactory.INSTANCE.generateStrongPasswordHash(up.getPassword());
 				up.setPasswordHash(passwordHash);
 				up.initUnid();
 				storageService.saveUserProfile(up);

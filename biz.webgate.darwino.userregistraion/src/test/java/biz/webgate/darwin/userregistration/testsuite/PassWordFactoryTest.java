@@ -9,8 +9,8 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 import org.passay.PasswordData;
 
-import biz.webgate.darwino.userregistraionservice.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 public class PassWordFactoryTest {
 

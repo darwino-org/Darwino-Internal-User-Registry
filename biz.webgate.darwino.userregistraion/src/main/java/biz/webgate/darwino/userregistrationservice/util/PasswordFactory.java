@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.util;
+package biz.webgate.darwino.userregistrationservice.util;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +24,7 @@ import org.passay.WhitespaceRule;
 public enum PasswordFactory {
 	INSTANCE;
 
-	public String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public String generateStrongPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		int iterations = 1000;
 		char[] chars = password.toCharArray();
 		byte[] salt = getSalt().getBytes();

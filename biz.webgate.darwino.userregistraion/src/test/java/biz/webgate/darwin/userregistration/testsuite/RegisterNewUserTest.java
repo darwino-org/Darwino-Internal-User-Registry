@@ -8,12 +8,12 @@ import org.junit.Test;
 
 import com.darwino.commons.json.JsonException;
 
-import biz.webgate.darwino.userregistraionservice.UserProfileStorageService;
-import biz.webgate.darwino.userregistraionservice.UserRegistrationException;
-import biz.webgate.darwino.userregistraionservice.actions.RegisterNewUser;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
+import biz.webgate.darwino.userregistrationservice.UserRegistrationException;
+import biz.webgate.darwino.userregistrationservice.actions.RegisterNewUser;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 public class RegisterNewUserTest {
 

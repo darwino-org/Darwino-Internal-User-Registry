@@ -9,9 +9,9 @@ import static org.junit.Assert.*;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.setup.UserRegistrationSetupService;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 public class UserProfileValidationTest {
 

@@ -1,7 +1,7 @@
-package biz.webgate.darwino.userregistraionservice.dao;
+package biz.webgate.darwino.userregistrationservice.dao;
 
-import biz.webgate.darwino.userregistraionservice.UserProfileStorageService;
-import biz.webgate.darwino.userregistraionservice.setup.DbSetup;
+import biz.webgate.darwino.userregistrationservice.UserProfileStorageService;
+import biz.webgate.darwino.userregistrationservice.setup.DbSetup;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.jsonstore.Cursor;
@@ -34,7 +34,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#saveUserProfile(biz.webgate.darwino.userregistraionservice.dao.UserProfile)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#saveUserProfile(biz.webgate.darwino.userregistrationservice.dao.UserProfile)
 	 */
 	@Override
 	public boolean saveUserProfile(UserProfile userProfile) throws JsonException {
@@ -46,7 +46,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#getUserProfileByEMail(java.lang.String, com.darwino.jsonstore.Session)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#getUserProfileByEMail(java.lang.String, com.darwino.jsonstore.Session)
 	 */
 	@Override
 	public UserProfile getUserProfileByEMail(String eMail, Session session) throws JsonException {
@@ -61,7 +61,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#userIsAlreadyRegistred(biz.webgate.darwino.userregistraionservice.dao.UserProfile)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#userIsAlreadyRegistred(biz.webgate.darwino.userregistrationservice.dao.UserProfile)
 	 */
 	@Override
 	public boolean userIsAlreadyRegistred(UserProfile userProfile) throws JsonException {
@@ -70,7 +70,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#getUserProfileByUNID(java.lang.String, com.darwino.jsonstore.Session)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#getUserProfileByUNID(java.lang.String, com.darwino.jsonstore.Session)
 	 */
 	@Override
 	public UserProfile getUserProfileByUNID(String unid, Session session) throws JsonException {
@@ -80,7 +80,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#getMyProfile()
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#getMyProfile()
 	 */
 	@Override
 	public UserProfile getMyProfile() throws JsonException {
@@ -90,7 +90,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#deleteUserProfile(biz.webgate.darwino.userregistraionservice.dao.UserProfile)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#deleteUserProfile(biz.webgate.darwino.userregistrationservice.dao.UserProfile)
 	 */
 	@Override
 	public boolean deleteUserProfile(UserProfile userProfile) {
@@ -98,7 +98,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	}
 
 	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistraionservice.dao.UserProfileSS#getUserProfileByConfirmationId(java.lang.String)
+	 * @see biz.webgate.darwino.userregistrationservice.dao.UserProfileSS#getUserProfileByConfirmationId(java.lang.String)
 	 */
 	@Override
 	public UserProfile getUserProfileByConfirmationId(String confirmationCodeId) {

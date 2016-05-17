@@ -9,14 +9,14 @@
  * deposited with the U.S. Copyright Office.     
  */
 
-package biz.webgate.darwino.userregistraionservice.j2ee;
+package biz.webgate.darwino.userregistrationservice.j2ee;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
-import biz.webgate.darwino.userregistraionservice.dao.UserProfileStorageServiceImpl;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfileStorageServiceImpl;
 
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.security.acl.User;

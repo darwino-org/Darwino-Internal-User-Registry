@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.rest;
+package biz.webgate.darwino.userregistrationservice.rest;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -7,7 +7,7 @@ import java.util.List;
 import com.darwino.commons.json.binding.annotations.JsonEntity;
 import com.darwino.commons.json.binding.annotations.JsonObject;
 
-import biz.webgate.darwino.userregistraionservice.dao.UserProfile;
+import biz.webgate.darwino.userregistrationservice.dao.UserProfile;
 
 @JsonObject(pojoObjectType = "requestResult")
 public class RequestResult {
@@ -54,6 +54,18 @@ public class RequestResult {
 
 	public static RequestResult buildProfileAnswer(UserProfile profile) {
 		return new RequestResult("ok", null, null, null, profile);
+	}
+	
+	public static RequestResult buildFailedActivationAnswer(){
+		return new RequestResult("activationfailed", "Activation failed", null, null, null);
+	}
+	
+	public static RequestResult buildProfileNotFoundAnswer(){
+		return new RequestResult("profilenotfound", "Profile not found", null, null, null);
+	}
+	
+	public static RequestResult buildFailedProfileSave(){
+		return new RequestResult("profilesavefailed", "Profile Save Failed", null, null, null);
 	}
 
 	public static RequestResult buildProfileValidationAnswer(UserProfile profile, List<String> messages) {

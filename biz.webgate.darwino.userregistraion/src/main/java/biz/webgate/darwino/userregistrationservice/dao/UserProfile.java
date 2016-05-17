@@ -1,4 +1,4 @@
-package biz.webgate.darwino.userregistraionservice.dao;
+package biz.webgate.darwino.userregistrationservice.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 
-import biz.webgate.darwino.userregistraionservice.util.PasswordFactory;
+import biz.webgate.darwino.userregistrationservice.util.PasswordFactory;
 
 import com.darwino.commons.json.binding.PojoBaseImpl;
 import com.darwino.commons.json.binding.annotations.JsonEntity;
