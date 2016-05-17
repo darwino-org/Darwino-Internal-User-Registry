@@ -22,10 +22,11 @@ public class ActivationAction extends AbstractRestAction {
 			if (UserProfileStorageServiceImpl.getInstance().saveUserProfile(userProfile)) {
 				return RequestResult.buildProfileAnswer(userProfile);
 			}
-			throwError(context, "An error occurd while activating your profile!", null);
-		} else {
-			throwError(context, "Profile not found!", null);
-		}
+			//throwError(context, "An error occurd while activating your profile!", null);
+		} 
+//		else {
+//			throwError(context, "Profile not found!", null);
+//		}
 		return RequestResult.buildFailedActivationAnswer();
 	}
 

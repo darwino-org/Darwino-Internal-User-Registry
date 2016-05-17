@@ -14,7 +14,7 @@ import com.darwino.jsonstore.meta._Store;
 import com.darwino.platform.DarwinoContext;
 
 public enum DbSetup {
-	INSTNACE;
+	INSTANCE;
 	public static String UP_STORE = "UserProfileStore";
 
 	public void setupUserStore(_Database db) throws JsonException {

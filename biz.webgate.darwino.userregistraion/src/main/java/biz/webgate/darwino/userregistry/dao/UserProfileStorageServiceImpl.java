@@ -39,7 +39,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	@Override
 	public boolean saveUserProfile(UserProfile userProfile) throws JsonException {
 
-		Database db = DbSetup.INSTNACE.getDatabase();
+		Database db = DbSetup.INSTANCE.getDatabase();
 		saveObject(userProfile, db);
 		return true;
 
@@ -50,7 +50,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	 */
 	@Override
 	public UserProfile getUserProfileByEMail(String eMail, Session session) throws JsonException {
-		Database db = DbSetup.INSTNACE.getDatabase(session);
+		Database db = DbSetup.INSTANCE.getDatabase(session);
 		Store store = db.getStore(DbSetup.UP_STORE);
 		Cursor c = store.openCursor().query("{@email:'" + eMail + "'}").range(0, 10);
 		CursorEntry ce = c.findOne();
@@ -74,7 +74,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	 */
 	@Override
 	public UserProfile getUserProfileByUNID(String unid, Session session) throws JsonException {
-		Database db = DbSetup.INSTNACE.getDatabase(session);
+		Database db = DbSetup.INSTANCE.getDatabase(session);
 		UserProfile userProfile = getObjectByUNID(unid, db);
 		return userProfile;
 	}

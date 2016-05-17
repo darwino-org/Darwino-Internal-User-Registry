@@ -16,7 +16,7 @@ public class RegisterAction extends AbstractRestAction {
 	public RequestResult executeAction(HttpServiceContext context) {
 		try {
 			UserProfile userProfile = (UserProfile) processFromJson(context, new UserProfile());
-			List<String> messages = userProfile.validateUser(null);
+			List<String> messages = userProfile.validateUser(PasswordFactory.DEFAULT_PASSWORD_VALIDATOR);
 			if (messages.isEmpty()) {
 				if (UserProfileStorageServiceImpl.getInstance().userIsAlreadyRegistred(userProfile)) {
 					return RequestResult.buildProfileValidationAnswer(userProfile, Arrays.asList("A User with this e-mail adress is already registred."));

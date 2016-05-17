@@ -9,12 +9,12 @@
 		<dependency>
 			<groupId>com.darwino</groupId>
 			<artifactId>dwo-platform</artifactId>
-			<version>0.8.0-SNAPSHOT</version>
+			<version>${DARWINO_VERSION}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.darwino</groupId>
 			<artifactId>dwo-services-social</artifactId>
-			<version>0.8.0-SNAPSHOT</version>
+			<version>${DARWINO_VERSION}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.passay</groupId>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.darwino</groupId>
 			<artifactId>dwo-jre-j2ee-platform</artifactId>
-			<version>0.8.0-SNAPSHOT</version>
+			<version>${DARWINO_VERSION}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -158,7 +158,7 @@
 
 	</build>
 	<properties>
-		<DARWINO_VERSION>0.8.0-SNAPSHOT</DARWINO_VERSION>
+		<DARWINO_VERSION>1.1.0-SNAPSHOT</DARWINO_VERSION>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

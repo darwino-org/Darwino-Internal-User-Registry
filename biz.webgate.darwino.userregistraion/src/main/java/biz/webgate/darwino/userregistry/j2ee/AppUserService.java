@@ -11,7 +11,6 @@
 
 package biz.webgate.darwino.userregistry.j2ee;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,12 +40,13 @@ public class AppUserService implements UserService {
 	private final static UserAuthenticator internalUserAuthenticator = new InternalUserAuthenticator();
 	
 	@Override
-	public Map<String, User> findUsers(String[] ids) throws UserException {
-		Map<String,User> users = new HashMap<String, User>();
+	public User[] findUsers(String[] ids) throws UserException {
+		User[] users = new User[ids.length];
+		int idx = 0;
 		for (String id: ids) {
 			User user = findUser(id);
 			if (user != null) {
-				users.put(user.getDn(),user);
+				users[idx++] = user;
 			}
 		}
 		return users;

@@ -57,15 +57,15 @@ public class RequestResult {
 	}
 	
 	public static RequestResult buildFailedActivationAnswer(){
-		return new RequestResult("activationfailed", "Activation failed", null, null, null);
+		return new RequestResult("error", "Activation failed", null, null, null);
 	}
 	
 	public static RequestResult buildProfileNotFoundAnswer(){
-		return new RequestResult("profilenotfound", "Profile not found", null, null, null);
+		return new RequestResult("error", "Profile not found", null, null, null);
 	}
 	
 	public static RequestResult buildFailedProfileSave(){
-		return new RequestResult("profilesavefailed", "Profile Save Failed", null, null, null);
+		return new RequestResult("error", "Profile Save Failed", null, null, null);
 	}
 
 	public static RequestResult buildProfileValidationAnswer(UserProfile profile, List<String> messages) {
