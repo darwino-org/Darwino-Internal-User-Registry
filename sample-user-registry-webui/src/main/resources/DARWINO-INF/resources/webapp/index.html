@@ -1,8 +1,20 @@
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="utf-8">
+		<script src="vendor/angular/_angular.min.js"></script>
+		<script src="vendor/angular/ngResource.js"></script>
+		<script src="vendor/angular/ui-router.min.js"></script>	
+		<link rel="stylesheet" href="vendor/bootstrap/bootstrap.css" />
+		
+		
+		<script src="app.js"></script>
+		<script src="app/landing/landing.route.js"></script>
+		<script src="app/landing/Landing.ctrl.js"></script>
+		<link rel="stylesheet" href="app/global.css" />
 	</head>
 
-	<body>
-		webb app user Reg
+	<body ng-app="UserRegistry">
+		<div ui-view></div>
 	</body>
 </html>
