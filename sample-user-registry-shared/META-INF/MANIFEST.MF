@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: sample-user-registry-shared
+Bundle-SymbolicName: biz.webgate.darwino.samples.sample-user-registry-shared
+Bundle-Version: 0.0.1.qualifier
+DARWINO_VERSION: 1.1.0-SNAPSHOT
+Export-Package: biz.webgate.darwino.samples.app;version="0.0.1"
+Require-Bundle: com.darwino.domino.platform;resolution:=optional
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.6))"
