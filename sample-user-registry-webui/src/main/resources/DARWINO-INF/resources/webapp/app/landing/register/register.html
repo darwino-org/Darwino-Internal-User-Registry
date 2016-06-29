@@ -1,1 +1,66 @@
-REGISTER
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-white text-center">
+			<span>Please fill out the following form to register with the Example Database.
+			</span>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Firstname</span> <input
+					type="text" class="form-control" placeholder="Firstname"
+					aria-describedby="basic-addon1" ng-model="register.data.firstname">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Lastname</span> <input
+					type="text" class="form-control" placeholder="Lastname"
+					aria-describedby="basic-addon1" ng-model="register.data.lastname">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Email</span> <input
+					type="text" class="form-control" placeholder="Email"
+					aria-describedby="basic-addon1" ng-model="register.data.email">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Password</span> <input
+					type="password" class="form-control"
+					aria-describedby="basic-addon1" ng-model="register.data.password">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Confirmation</span>
+				<input type="password" class="form-control"
+					aria-describedby="basic-addon1" ng-model="register.data.confirmation">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-6 col-md-offset-3 text-center">
+				<a class="btn btn-default" ng-click="register.register()" role="button">Register</a>
+			</div>
+		</div>
+	</div>
+</div>

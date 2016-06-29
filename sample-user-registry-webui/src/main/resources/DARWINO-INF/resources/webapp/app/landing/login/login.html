@@ -1,1 +1,29 @@
-LOGIN
+<div class="container-fluid decision-box">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center">
+			<label for="email" class="text-white">Email</label>
+			<div class="input-group center-block">
+				<input type="text" class="form-control" id="email"
+					aria-describedby="basic-addon3" placeholder="Email" ng-model="login.email">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center">
+			<label for="pw" class="text-white">Password</label>
+			<div class="input-group center-block">
+				<input type="password" class="form-control" id="pw"
+					aria-describedby="basic-addon3" ng-model="login.password">
+			</div>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-6 col-md-offset-3 text-center">
+				<a class="btn btn-default" ng-click="login.login()" role="button">Login</a>
+			</div>
+		</div>
+	</div>
+</div>

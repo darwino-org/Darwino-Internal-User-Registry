@@ -4,10 +4,17 @@
 			<h1>Darwino User Registry Example</h1>
 		</div>
 	</div>
-	
+
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3 center-box" ui-view>
-		
+		<div class="col-md-3">
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation" ui-sref-active="active"><a ui-sref="landing.decision" class="text-white">Landing</a></li>
+				<li role="presentation" ui-sref-active="active"><a ui-sref="landing.login" class="text-white">Login</a></li>
+				<li role="presentation" ui-sref-active="active"><a ui-sref="landing.register" class="text-white">Registration</a></li>
+				<li role="presentation" ui-sref-active="active"><a ui-sref="landing.activate" class="text-white">Activation</a></li>
+				<li role="presentation" ui-sref-active="active"><a ui-sref="inside" class="text-white">Inside</a></li>
+			</ul>
 		</div>
+		<div class="col-md-6 center-box" ui-view></div>
 	</div>
 </div>
