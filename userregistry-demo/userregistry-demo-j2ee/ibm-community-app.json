@@ -1,0 +1,29 @@
+{
+	"name": "userregistrydemo",
+	"description": "This is a Darwino auto-generated application",
+	"type":"community_widget",
+	"urls":{
+	},
+	"payload": {
+		"defId": "Demo: Userregistry",
+		"showInPalette": "true",
+		"primaryWidget": "false",
+		"modes": "view",
+		"themes": "wpthemeThin wpthemeNarrow wpthemeWide wpthemeBanner",
+		"url": "https://apps.collabservnext.com/connections/resources/web/com.ibm.social.urliWidget.web.resources/widget/urlWidget.xml",
+		"itemSet": [
+			{
+				"name": "url",
+				"value": "http://192.168.92.171:8080/userregistrydemo/widget/ibm-community-app.html"
+			},
+			{
+				"name": "width",
+				"value": "100%"
+			},
+			{
+				"name": "height",
+				"value": "400px"
+			}
+		]
+	}
+}

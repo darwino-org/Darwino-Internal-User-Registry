@@ -1,1 +1,12 @@
 biz.webgate.darwino.userregistraion/target/
+userregistry-demo/.project
+userregistry-demo/.settings/
+userregistry-demo/userregistry-demo-j2ee/.classpath
+userregistry-demo/userregistry-demo-j2ee/.darwino
+userregistry-demo/userregistry-demo-j2ee/.project
+userregistry-demo/userregistry-demo-j2ee/.settings/
+userregistry-demo/userregistry-demo-shared/.settings/
+userregistry-demo/userregistry-demo-webui/.classpath
+userregistry-demo/userregistry-demo-webui/.darwino
+userregistry-demo/userregistry-demo-webui/.project
+userregistry-demo/userregistry-demo-webui/.settings/
