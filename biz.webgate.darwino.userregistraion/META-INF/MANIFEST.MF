@@ -2,20 +2,23 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: userregistry
 Bundle-SymbolicName: biz.webgate.darwino.dwo-3rdparty-userregistry
-Bundle-Version: 0.8.0.qualifier
-DARWINO_VERSION: 1.1.0-SNAPSHOT
-Export-Package: biz.webgate.darwino.userregistry.actions;uses:="biz.webg
- ate.darwino.userregistry,biz.webgate.darwino.userregistry.dao,biz.webga
- te.darwino.userregistry.setup";version="0.8.0",biz.webgate.darwino.user
- registry.dao;uses:="biz.webgate.darwino.userregistry";version="0.8.0",b
- iz.webgate.darwino.userregistry.j2ee;version="0.8.0",biz.webgate.darwin
- o.userregistry.plugin;version="0.8.0",biz.webgate.darwino.userregistry.
- rest.action;uses:="biz.webgate.darwino.userregistry.rest";version="0.8.
- 0",biz.webgate.darwino.userregistry.rest;uses:="biz.webgate.darwino.use
- rregistry.dao";version="0.8.0",biz.webgate.darwino.userregistry.setup;v
- ersion="0.8.0",biz.webgate.darwino.userregistry;uses:="biz.webgate.darw
- ino.userregistry.dao";version="0.8.0",biz.webgate.darwino.userregistry.
- util;version="0.8.0"
+Bundle-Version: 1.5.0.
+DARWINO_VERSION: 1.5.0-SNAPSHOT
+Export-Package: org.darwino.plugin.userregistry.api;uses:="org.darwino.p
+ lugin.userregistry,org.darwino.plugin.userregistry.bean,org.darwino.plu
+ gin.userregistry.bo";version="1.5.0",org.darwino.plugin.userregistry.be
+ an;uses:="org.darwino.plugin.userregistry.api";version="1.5.0",org.darw
+ ino.plugin.userregistry.bo;version="1.5.0",org.darwino.plugin.userregis
+ try.dao;uses:="org.darwino.plugin.userregistry,org.darwino.plugin.userr
+ egistry.bo";version="1.5.0",org.darwino.plugin.userregistry.j2ee;versio
+ n="1.5.0",org.darwino.plugin.userregistry.plugin;version="1.5.0",org.da
+ rwino.plugin.userregistry;uses:="org.darwino.plugin.userregistry.bo";ve
+ rsion="1.5.0",org.darwino.plugin.userregistry.rest.action;uses:="org.da
+ rwino.plugin.userregistry,org.darwino.plugin.userregistry.bean,org.darw
+ ino.plugin.userregistry.rest";version="1.5.0",org.darwino.plugin.userre
+ gistry.rest;uses:="org.darwino.plugin.userregistry";version="1.5.0",org
+ .darwino.plugin.userregistry.setup;version="1.5.0",org.darwino.plugin.u
+ serregistry.util;version="1.5.0"
 Include-Resource: DARWINO-INF/resources/wgc-userreg/js/profileController
  .js=src/main/resources/DARWINO-INF/resources/wgc-userreg/js/profileCont
  roller.js,DARWINO-INF/resources/wgc-userreg/template/signup.html=src/ma

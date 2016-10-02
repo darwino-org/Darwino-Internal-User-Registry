@@ -5,12 +5,11 @@ import static org.easymock.EasyMock.*;
 
 import java.util.List;
 
+import org.darwino.plugin.userregistry.setup.UserRegistrationSetupService;
+import org.darwino.plugin.userregistry.util.PasswordFactory;
 import org.easymock.EasyMock;
 import org.junit.Test;
 import org.passay.PasswordData;
-
-import biz.webgate.darwino.userregistry.setup.UserRegistrationSetupService;
-import biz.webgate.darwino.userregistry.util.PasswordFactory;
 
 public class PassWordFactoryTest {
 

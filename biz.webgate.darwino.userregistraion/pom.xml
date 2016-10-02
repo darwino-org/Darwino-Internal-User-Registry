@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>biz.webgate.darwino</groupId>
 	<artifactId>dwo-3rdparty-userregistry</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>1.5.0-SNAPSHOT</version>
 	<name>userregistry</name>
 	<dependencies>
 		<dependency>
@@ -158,7 +158,7 @@
 
 	</build>
 	<properties>
-		<DARWINO_VERSION>1.1.0-SNAPSHOT</DARWINO_VERSION>
+		<DARWINO_VERSION>1.5.0-SNAPSHOT</DARWINO_VERSION>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
