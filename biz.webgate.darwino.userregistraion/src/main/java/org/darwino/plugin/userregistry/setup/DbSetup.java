@@ -1,7 +1,6 @@
 package org.darwino.plugin.userregistry.setup;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.darwino.plugin.userregistry.bean.UserRegistrationBean;
 
 import com.darwino.commons.Platform;
 import com.darwino.commons.json.JsonException;
@@ -30,19 +29,15 @@ public enum DbSetup {
 	}
 
 	public Database getDatabase(Session session) throws JsonException {
-		List<UserRegistrationSetupService> extensions = new ArrayList<UserRegistrationSetupService>();
-		System.out.println("DC"+DarwinoContext.get());
-		//System.out.println("APP:"+Platform.findExtensions());
-		extensions = Platform.findExtensions(UserRegistrationSetupService.class);
-		if (extensions.isEmpty()) {
-			throw new JsonException(null, "No UserRegisterationSetupService registered.", this);
+		UserRegistrationBean bean = Platform.getManagedBean(UserRegistrationBean.BEAN_NAME);
+		if (bean == null) {
+			throw new JsonException(null, "No UserRegistrationBean defined!.", this);
 		}
-		UserRegistrationSetupService setup = (UserRegistrationSetupService) extensions.get(0);
 		Database db = null;
 		if (session != null) {
-			db = session.getDatabase(setup.getDatabaseName());
+			db = session.getDatabase(bean.getDatabaseName());
 		} else {
-			db = DarwinoContext.get().getSession().getDatabase(setup.getDatabaseName());
+			db = DarwinoContext.get().getSession().getDatabase(bean.getDatabaseName());
 		}
 		return db;
 

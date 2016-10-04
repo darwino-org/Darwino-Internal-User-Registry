@@ -1,0 +1,15 @@
+<ion-view view-title="Confirmation"> <ion-content>
+
+<h1>Confirmation of your account!</h1>
+<ion-spinner ng-if="confCtrl.loading"></ion-spinner>
+<div class="list list-inset" ng-show="confCtrl.showConfirmationNumber">
+	<label class="item item-input"> <span class="input-label">Confirmation Number</span> 
+	<input type="text" placeholder="Max" ng-model="confCtrl.confirmationnumber">
+	</label> 
+	<div class="button-bar">
+		<a class="button button-positive" ng-click="confCtrl.confirm()">Confirm</a><a
+			class="button">Cancel</a>
+	</div>
+</div>
+
+</ion-content> </ion-view>

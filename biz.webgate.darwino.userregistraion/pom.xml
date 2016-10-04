@@ -5,6 +5,7 @@
 	<artifactId>dwo-3rdparty-userregistry</artifactId>
 	<version>1.5.0-SNAPSHOT</version>
 	<name>userregistry</name>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>com.darwino</groupId>
@@ -79,37 +80,6 @@
 					<version>2.17</version>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>2.5.4</version>
-					<extensions>true</extensions>
-
-					<configuration>
-						<manifestLocation>${manifest-location}</manifestLocation>
-						<supportedProjectTypes>
-							<supportedProjectType>jar</supportedProjectType>
-							<supportedProjectType>bundle</supportedProjectType>
-							<supportedProjectType>eclipse-plugin</supportedProjectType>
-						</supportedProjectTypes>
-						<instructions>
-							<Import-Package />
-							<Private-Package />
-							<_snapshot>${osgi.qualifier}</_snapshot>
-							<_removeheaders>Bnd-LastModified,Built-By,Build-Jdk,Created-By,Tool</_removeheaders>
-						</instructions>
-					</configuration>
-
-					<executions>
-						<execution>
-							<id>bundle-manifest</id>
-							<phase>process-classes</phase>
-							<goals>
-								<goal>manifest</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.6</version>
 				</plugin>
@@ -168,6 +138,7 @@
 			in order to make OSGi development in Eclipse smoother -->
 		<manifest-location>META-INF</manifest-location>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<osgi.qualifier>${maven.build.timestamp}</osgi.qualifier>
 	</properties>
 
 

@@ -1,0 +1,42 @@
+<ion-view view-title="Selfregistration"> <ion-content>
+
+<h1>Get involved, register today!</h1>
+
+<div class="list card" ng-show="regCtrl.error">
+	<div class="item assertive">
+		<h2>Error</h2>
+		<p>{{regCtrl.errortext}}</p>
+	</div>
+	<div class="item item-body energized">
+		<p>{{regCtrl.errortrace}}</p>
+	</div>
+</div>
+<div class="list card" ng-show="regCtrl.validation">
+	<div class="item">
+		<h2>Registration failed</h2>
+		<p>{{regCtrl.validationtext}}</p>
+	</div>
+	<div class="item item-body">
+		<p ng-repeat="t in regCtrl.validationmessages">{{t}}</p>
+	</div>
+</div>
+<div class="list list-inset">
+	<label class="item item-input"> <span class="input-label">First
+			Name</span> <input type="text" placeholder="Max" ng-model="regCtrl.data.firstname">
+	</label> <label class="item item-input"> <span class="input-label">Last
+			Name</span> <input type="text" placeholder="Magic" ng-model="regCtrl.data.lastname">
+	</label> <label class="item item-input"> <span class="input-label">Email</span>
+		<input type="text" placeholder="Max.Magic@darwino.org"
+		ng-model="regCtrl.data.email">
+	</label> <label class="item item-input"> <span class="input-label">Password</span>
+		<input type="password" ng-model="regCtrl.data.password">
+	</label> <label class="item item-input"> <span class="input-label">Confirmation</span>
+		<input type="password" ng-model="regCtrl.data.confirmation">
+	</label>
+	<div class="button-bar">
+		<a class="button button-positive" ng-click="regCtrl.register()">Register</a><a
+			class="button">Cancel</a>
+	</div>
+</div>
+
+</ion-content> </ion-view>

@@ -337,7 +337,24 @@ angular.module('app', ['ngSanitize','ionic', 'darwino.ionic', 'darwino.angular.j
 				templateUrl : "templates/about.html"
 			}
 		}
+	}).state('app.registration', {
+		url : "/registration",
+		views : {
+			'menuContent' : {
+				templateUrl : "templates/registration.html",
+				controller : "RegistrationCtrl as regCtrl"
+			}
+		}
+	}).state('app.confirmation', {
+		url : "/confirmation?id",
+		views : {
+			'menuContent' : {
+				templateUrl : "templates/confirmation.html",
+				controller : "ConfirmationCtrl as confCtrl"
+			}
+		}
 	});
+;
 
 	$urlRouterProvider.otherwise(DEFAULT_STATE_URL);
 }])
@@ -724,4 +741,78 @@ angular.module('app', ['ngSanitize','ionic', 'darwino.ionic', 'darwino.angular.j
 	});
 }])
 
+.controller('RegistrationCtrl', ['$http', function($http) {
+	var vm = this;
+	vm.data = {};
+	vm.data.firstname = "";
+	vm.data.lastname = "";
+	vm.data.email = "";
+	vm.data.password = "";
+	vm.data.confirmation = "";
+	vm.error = false;
+	vm.done = false;
+	vm.validation = false;
+	vm.register = function() {
+		vm.error = false;
+		vm.done = false;
+		vm.validation = false;
+		$http.post("$darwino-3rd-userregistry-api/registration?action=register", vm.data).then(function(response) {
+			var result = response.data;
+			if (result.status === 'OK') {
+				vm.done = true;
+			}
+			if (result.status === "error") {
+				vm.error = true;
+				vm.errortext = result.error;
+				vm.errortrace = result.trace;
+			}
+			if (result.status === "validationfailed") {
+				vm.validation = true;
+				vm.validationmessages = result.messages;
+				vm.validationtext = result.error;
+			}
+			console.dir(response);
+		}, function (response){
+			alert("error: "+response.status +" / "+response.statusText);
+			console.dir(response);
+		})
+	};
+}])
+.controller('ConfirmationCtrl', ['$http','$stateParams', function($http,$stateParams) {
+	var vm = this;
+	vm.confirmationnumber = $stateParams.id;
+	vm.showConfirmationNumber = false;
+	vm.error = false;
+	vm.loading = false;
+	vm.confirmation = function() {
+		vm.error = false;
+		vm.loading = true;
+		$http.get("$darwino-3rd-userregistry-api/registration?action=activate&id="+vm.confirmationnumber).then(function(response) {
+			var result = response.data;
+			if (result.status === 'OK') {
+				vm.done = true;
+			}
+			if (result.status === "error") {
+				vm.error = true;
+				vm.errortext = result.error;
+				vm.errortrace = result.trace;
+			}
+			if (result.status === "validationfailed") {
+				vm.validation = true;
+				vm.validationmessages = result.messages;
+				vm.validationtext = result.error;
+			}
+			console.dir(response);
+		}, function (response){
+			alert("error: "+response.status +" / "+response.statusText);
+			console.dir(response);
+		})
+	};
+	if (typeof vm.confirmationnumber == 'undefined' || vm.confirmationnumber === '') {
+		vm.showConfirmationNumber = true;
+	} else {
+		vm.confirmation();
+	}
+
+}])
 }());

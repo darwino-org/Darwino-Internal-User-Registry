@@ -20,7 +20,7 @@ import com.darwino.commons.services.rest.RestServiceFactory;
 public class ProfileServiceFactory extends RestServiceFactory {
 
 	public ProfileServiceFactory() {
-		super("$dwo3rd-userregistry-api");
+		super(".darwino-3rd-userregistry-api");
 		System.out.println("PSF loaded");
 	}
 

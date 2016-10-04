@@ -22,6 +22,7 @@ public class UserRegistrationBean implements ManagedBean {
 	private String confimationUrl;
 	private String invitationUrl;
 	private String passwordResetUrl;
+	private String databaseName;
 
 	@Override
 	public void beanInitialize() {
@@ -117,6 +118,14 @@ public class UserRegistrationBean implements ManagedBean {
 
 	public void setPasswordResetUrl(String passwordResetUrl) {
 		this.passwordResetUrl = passwordResetUrl;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
+	}
+
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
 	}
 
 }

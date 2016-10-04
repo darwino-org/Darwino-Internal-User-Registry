@@ -44,6 +44,7 @@ public class UserRegistryImpl implements UserRegistry {
 			String passwordHash = PasswordFactory.INSTANCE.generateStrongPasswordHash(userProfile.getPassword());
 			userProfile.setPasswordHash(passwordHash);
 			userProfile.initUnid();
+			userProfile.buildConfirmationNumber();
 			UserProfileStorageServiceImpl.getInstance().saveUserProfile(userProfile);
 		} catch (JsonException ex) {
 			throw UserRegistrationException.buildSystemError(ex);

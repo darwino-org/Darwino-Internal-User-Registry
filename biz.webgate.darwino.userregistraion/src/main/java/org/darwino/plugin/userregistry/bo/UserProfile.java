@@ -1,19 +1,13 @@
 package org.darwino.plugin.userregistry.bo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.darwino.plugin.userregistry.util.PasswordFactory;
-import org.passay.PasswordData;
-import org.passay.PasswordValidator;
-
 import com.darwino.commons.json.binding.PojoBaseImpl;
 import com.darwino.commons.serialize.annotations.Serialize;
-import com.darwino.commons.serialize.annotations.SerializeScope;
 import com.darwino.commons.serialize.annotations.SerializeObject;
-import com.darwino.commons.util.StringUtil;
+import com.darwino.commons.serialize.annotations.SerializeScope;
 
 @SerializeObject(pojoObjectType = "biz.webgate.darwino.userregistry.dao.UserProfile")
 public class UserProfile extends PojoBaseImpl {
@@ -46,6 +40,12 @@ public class UserProfile extends PojoBaseImpl {
 	
 	@Serialize(name = "properties", scope = SerializeScope.STORE)
 	private Map<String,Object> properties;
+
+	@Serialize(name = "groups", scope = SerializeScope.STORE)
+	private List<String> groups;
+
+	@Serialize(name = "roles", scope = SerializeScope.STORE)
+	private List<String> roles;
 
 	public String getFirstName() {
 		return firstName;
@@ -143,6 +143,22 @@ public class UserProfile extends PojoBaseImpl {
 
 	public void setProperties(Map<String, Object> properties) {
 		this.properties = properties;
+	}
+
+	public List<String> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<String> groups) {
+		this.groups = groups;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
 	}
 
 }

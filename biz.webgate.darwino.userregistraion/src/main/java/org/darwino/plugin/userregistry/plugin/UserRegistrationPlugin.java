@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.darwino.plugin.userregistry.ProfileServiceFactory;
 import org.darwino.plugin.userregistry.bean.UserRegistrationBean;
-import org.darwino.plugin.userregistry.j2ee.AppUserService;
+import org.darwino.plugin.userregistry.j2ee.UserRegistrationDir;
 
 import com.darwino.commons.Platform;
 import com.darwino.commons.platform.impl.PluginImpl;
@@ -31,10 +31,6 @@ public class UserRegistrationPlugin extends PluginImpl{
 			} else {
 				Platform.logManager(getClass().getCanonicalName()).w("No {0} Bean registred!", UserRegistrationBean.BEAN_NAME);
 			}
-		}
-		if (UserService.class == serviceClass) {
-			System.out.println("Loading AppService");
-			extensions.add(new AppUserService());
 		}
 	}
 	
