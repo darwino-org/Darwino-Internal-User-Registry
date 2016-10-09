@@ -2,14 +2,19 @@
 
 <h1>Confirmation of your account!</h1>
 <ion-spinner ng-if="confCtrl.loading"></ion-spinner>
-<div class="list list-inset" ng-show="confCtrl.showConfirmationNumber">
+<msg-box error="confCtrl.error" type='confCtrl.errortype' messages = 'confCtrl.errormsgs' trace='confCtrl.errortrace'></msg-box>
+<div class="list list-inset" ng-show="confCtrl.showConfirmationNumber && confCtrl.done == false">
 	<label class="item item-input"> <span class="input-label">Confirmation Number</span> 
 	<input type="text" placeholder="Max" ng-model="confCtrl.confirmationnumber">
 	</label> 
 	<div class="button-bar">
-		<a class="button button-positive" ng-click="confCtrl.confirm()">Confirm</a><a
+		<a class="button button-positive" ng-click="confCtrl.confirmation()">Confirm</a><a
 			class="button">Cancel</a>
 	</div>
 </div>
-
+<div class="list card" ng-show="confCtrl.done">
+	<div class="item">
+	<p>Welcome <strong>{{confCtrl.emp.firstname}} {{confCtrl.emp.lastname}}</strong>! Your account is activated.</p>
+	</div>
+</div>
 </ion-content> </ion-view>

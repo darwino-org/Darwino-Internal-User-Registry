@@ -16,7 +16,7 @@ public interface UserRegistry {
 
 	public void activateInvitedUser(String confirmationId, UserProfile up, HttpServiceContext context) throws UserRegistrationException;
 
-	public void activateUser(String confirmationId, HttpServiceContext context) throws UserRegistrationException;
+	public UserProfile activateUser(String confirmationId, HttpServiceContext context) throws UserRegistrationException;
 
 	public void changePassword(UserProfile userProfile, HttpServiceContext context) throws UserRegistrationException;
 

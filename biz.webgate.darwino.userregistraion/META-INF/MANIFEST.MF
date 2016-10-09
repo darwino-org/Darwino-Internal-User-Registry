@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: userregistry
 Bundle-SymbolicName: biz.webgate.darwino.dwo-3rdparty-userregistry
-Bundle-Version: 1.5.0.
+Bundle-Version: 1.5.0.qualifier
 DARWINO_VERSION: 1.5.0-SNAPSHOT
 Export-Package: org.darwino.plugin.userregistry.api;uses:="org.darwino.p
  lugin.userregistry,org.darwino.plugin.userregistry.bean,org.darwino.plu

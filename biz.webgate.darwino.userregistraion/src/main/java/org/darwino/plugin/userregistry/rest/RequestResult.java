@@ -5,6 +5,7 @@ import java.io.StringWriter;
 import java.util.List;
 
 import org.darwino.plugin.userregistry.UserRegistrationException;
+import org.darwino.plugin.userregistry.bo.UserProfile;
 
 import com.darwino.commons.serialize.annotations.Serialize;
 import com.darwino.commons.serialize.annotations.SerializeObject;
@@ -22,14 +23,17 @@ public class RequestResult {
 	private final String trace;
 	@Serialize(name = "action")
 	private final String action;
+	@Serialize(name = "profile")
+	private final UserProfile profile;
 
-	private RequestResult(String status, String error, List<String> messages, String trace, String action) {
+	private RequestResult(String status, String error, List<String> messages, String trace, String action, UserProfile profile) {
 		super();
 		this.status = status;
 		this.error = error;
 		this.messages = messages;
 		this.trace = trace;
 		this.action = action;
+		this.profile = profile;
 	}
 
 	public String getStatus() {
@@ -52,20 +56,22 @@ public class RequestResult {
 		return action;
 	}
 
+	public UserProfile getProfile() {
+		return profile;
+	}
+
 	public static RequestResult buildActionOKAnswer(String action) {
-		return new RequestResult("OK", null, null, null, action);
+		return new RequestResult("OK", null, null, null, action, null);
+	}
+
+	public static RequestResult buildActionOKAnswer(String action, UserProfile profile) {
+		return new RequestResult("OK", null, null, null, action, profile);
 	}
 
 	public static RequestResult buildActionFailed(UserRegistrationException ex, String action) {
-		if (ex.validationOnly()) {
-			return new RequestResult("validationfailed", ex.getMessage(), ex.getMessages(), null, action);
-		} else {	
-	
-			return new RequestResult("error",ex.getMessage(), ex.getMessages(), extractStrackTrace(ex), action);
-		}
+		return new RequestResult(ex.getErrorType().name(), ex.getMessage(), ex.getMessages(), extractStrackTrace(ex), action, null);
 	}
 
-	
 	private static String extractStrackTrace(Exception ex) {
 		if (ex.getStackTrace() == null) {
 			return "";

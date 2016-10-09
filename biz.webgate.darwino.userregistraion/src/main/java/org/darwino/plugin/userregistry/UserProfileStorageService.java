@@ -1,5 +1,7 @@
 package org.darwino.plugin.userregistry;
 
+import java.io.IOException;
+
 import org.darwino.plugin.userregistry.bo.UserProfile;
 
 import com.darwino.commons.json.JsonException;
@@ -19,6 +21,6 @@ public interface UserProfileStorageService {
 
 	public abstract boolean deleteUserProfile(UserProfile userProfile);
 
-	public abstract UserProfile getUserProfileByConfirmationId(String confirmationCodeId);
+	public abstract UserProfile getUserProfileByConfirmationId(String confirmationCodeId) throws JsonException, IOException;
 
 }

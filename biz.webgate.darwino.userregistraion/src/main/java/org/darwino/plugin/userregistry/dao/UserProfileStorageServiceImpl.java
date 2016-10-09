@@ -1,10 +1,14 @@
 package org.darwino.plugin.userregistry.dao;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.darwino.plugin.userregistry.UserProfileStorageService;
 import org.darwino.plugin.userregistry.bo.UserProfile;
 import org.darwino.plugin.userregistry.setup.DbSetup;
 
 import com.darwino.commons.json.JsonException;
+import com.darwino.commons.json.JsonObject;
 import com.darwino.jsonstore.Cursor;
 import com.darwino.jsonstore.Database;
 import com.darwino.jsonstore.Session;
@@ -34,8 +38,12 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	private UserProfileStorageServiceImpl() {
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#saveUserProfile(biz.webgate.darwino.userregistry.dao.UserProfile)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * biz.webgate.darwino.userregistry.dao.UserProfileSS#saveUserProfile(biz.
+	 * webgate.darwino.userregistry.dao.UserProfile)
 	 */
 	@Override
 	public boolean saveUserProfile(UserProfile userProfile) throws JsonException {
@@ -46,8 +54,12 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#getUserProfileByEMail(java.lang.String, com.darwino.jsonstore.Session)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * biz.webgate.darwino.userregistry.dao.UserProfileSS#getUserProfileByEMail(
+	 * java.lang.String, com.darwino.jsonstore.Session)
 	 */
 	@Override
 	public UserProfile getUserProfileByEMail(String eMail, Session session) throws JsonException {
@@ -61,8 +73,12 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#userIsAlreadyRegistred(biz.webgate.darwino.userregistry.dao.UserProfile)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * biz.webgate.darwino.userregistry.dao.UserProfileSS#userIsAlreadyRegistred
+	 * (biz.webgate.darwino.userregistry.dao.UserProfile)
 	 */
 	@Override
 	public boolean userIsAlreadyRegistred(UserProfile userProfile) throws JsonException {
@@ -70,8 +86,12 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 		return up != null;
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#getUserProfileByUNID(java.lang.String, com.darwino.jsonstore.Session)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * biz.webgate.darwino.userregistry.dao.UserProfileSS#getUserProfileByUNID(
+	 * java.lang.String, com.darwino.jsonstore.Session)
 	 */
 	@Override
 	public UserProfile getUserProfileByUNID(String unid, Session session) throws JsonException {
@@ -80,7 +100,9 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 		return userProfile;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#getMyProfile()
 	 */
 	@Override
@@ -90,21 +112,35 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 		return userProfile;
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#deleteUserProfile(biz.webgate.darwino.userregistry.dao.UserProfile)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * biz.webgate.darwino.userregistry.dao.UserProfileSS#deleteUserProfile(biz.
+	 * webgate.darwino.userregistry.dao.UserProfile)
 	 */
 	@Override
 	public boolean deleteUserProfile(UserProfile userProfile) {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#getUserProfileByConfirmationId(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see biz.webgate.darwino.userregistry.dao.UserProfileSS#
+	 * getUserProfileByConfirmationId(java.lang.String)
 	 */
 	@Override
-	public UserProfile getUserProfileByConfirmationId(String confirmationCodeId) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserProfile getUserProfileByConfirmationId(String confirmationCodeId) throws JsonException, IOException {
+		Database db = DbSetup.INSTANCE.getDatabase();
+		JsonObject selection = new JsonObject();
+		selection.put("confirmationnumber", confirmationCodeId);
+		List<UserProfile> users = selectObject(db, selection.toJson(), null, 100);
+		if (users.isEmpty()) {
+			return null;
+		} else {
+			return users.get(0);
+		}
 	}
 
 	@Override

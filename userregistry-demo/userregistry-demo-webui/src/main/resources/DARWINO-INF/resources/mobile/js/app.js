@@ -752,62 +752,80 @@ angular.module('app', ['ngSanitize','ionic', 'darwino.ionic', 'darwino.angular.j
 	vm.error = false;
 	vm.done = false;
 	vm.validation = false;
+	vm.loading = false;
 	vm.register = function() {
 		vm.error = false;
 		vm.done = false;
 		vm.validation = false;
 		$http.post("$darwino-3rd-userregistry-api/registration?action=register", vm.data).then(function(response) {
 			var result = response.data;
+			vm.loading = true;
 			if (result.status === 'OK') {
 				vm.done = true;
-			}
-			if (result.status === "error") {
-				vm.error = true;
-				vm.errortext = result.error;
+				vm.resetForm();
+			}else {
+				vm.error = result.error;
+				vm.errortype = result.status;
+				vm.errormsgs = result.messages;
 				vm.errortrace = result.trace;
 			}
-			if (result.status === "validationfailed") {
-				vm.validation = true;
-				vm.validationmessages = result.messages;
-				vm.validationtext = result.error;
-			}
+			vm.loading = false;
 			console.dir(response);
 		}, function (response){
 			alert("error: "+response.status +" / "+response.statusText);
 			console.dir(response);
 		})
 	};
+	vm.resetForm = function () {
+		vm.data = {};
+		vm.data.firstname = "";
+		vm.data.lastname = "";
+		vm.data.email = "";
+		vm.data.password = "";
+		vm.data.confirmation = "";
+		vm.error = false;
+		vm.done = false;
+		vm.validation = false;
+		vm.loading = false;
+	}
+	vm.resetForm();
 }])
 .controller('ConfirmationCtrl', ['$http','$stateParams', function($http,$stateParams) {
 	var vm = this;
 	vm.confirmationnumber = $stateParams.id;
 	vm.showConfirmationNumber = false;
-	vm.error = false;
+	vm.error = null;
 	vm.loading = false;
+	vm.done = false;
 	vm.confirmation = function() {
-		vm.error = false;
+		vm.cleanError();
 		vm.loading = true;
 		$http.get("$darwino-3rd-userregistry-api/registration?action=activate&id="+vm.confirmationnumber).then(function(response) {
 			var result = response.data;
 			if (result.status === 'OK') {
 				vm.done = true;
-			}
-			if (result.status === "error") {
-				vm.error = true;
-				vm.errortext = result.error;
+				vm.emp = result.profile;
+			} else {
+				vm.error = result.error;
+				vm.errortype = result.status;
+				vm.errormsgs = result.messages;
 				vm.errortrace = result.trace;
 			}
-			if (result.status === "validationfailed") {
-				vm.validation = true;
-				vm.validationmessages = result.messages;
-				vm.validationtext = result.error;
-			}
+			vm.loading = false;
 			console.dir(response);
 		}, function (response){
 			alert("error: "+response.status +" / "+response.statusText);
 			console.dir(response);
 		})
 	};
+	vm.cleanError = function () {
+		vm.done = "";
+		vm.emp = {};
+		vm.error = null;
+		vm.errortype = "";
+		vm.errormsgs = "";
+		vm.errortrace = "";
+	}
 	if (typeof vm.confirmationnumber == 'undefined' || vm.confirmationnumber === '') {
 		vm.showConfirmationNumber = true;
 	} else {

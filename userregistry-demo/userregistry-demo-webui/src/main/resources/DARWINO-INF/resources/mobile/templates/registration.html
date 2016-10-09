@@ -1,26 +1,9 @@
 <ion-view view-title="Selfregistration"> <ion-content>
 
 <h1>Get involved, register today!</h1>
-
-<div class="list card" ng-show="regCtrl.error">
-	<div class="item assertive">
-		<h2>Error</h2>
-		<p>{{regCtrl.errortext}}</p>
-	</div>
-	<div class="item item-body energized">
-		<p>{{regCtrl.errortrace}}</p>
-	</div>
-</div>
-<div class="list card" ng-show="regCtrl.validation">
-	<div class="item">
-		<h2>Registration failed</h2>
-		<p>{{regCtrl.validationtext}}</p>
-	</div>
-	<div class="item item-body">
-		<p ng-repeat="t in regCtrl.validationmessages">{{t}}</p>
-	</div>
-</div>
-<div class="list list-inset">
+<ion-spinner ng-if="regCtrl.loading"></ion-spinner>
+<msg-box error="regCtrl.error" type='regCtrl.errortype' messages = 'regCtrl.errormsgs' trace='regCtrl.errortrace'></msg-box>
+<div class="list list-inset" ng-hide="regCtrl.done">
 	<label class="item item-input"> <span class="input-label">First
 			Name</span> <input type="text" placeholder="Max" ng-model="regCtrl.data.firstname">
 	</label> <label class="item item-input"> <span class="input-label">Last
@@ -37,6 +20,9 @@
 		<a class="button button-positive" ng-click="regCtrl.register()">Register</a><a
 			class="button">Cancel</a>
 	</div>
+</div>
+<div class="list card">
+<div class="list item" ng-show="regCtrl.done">Thank you for register. You will receive a e-mail to activate your account!</div>
 </div>
 
 </ion-content> </ion-view>

@@ -1,5 +1,6 @@
 package org.darwino.plugin.userregistry.api;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
@@ -34,13 +35,13 @@ public class UserRegistryImpl implements UserRegistry {
 		}
 		List<String> messages = UserProfileValidator.INSTNACE.validateUserRegistrationRequest(userProfile, validator);
 		if (!messages.isEmpty()) {
-			throw new UserRegistrationException("Validation error", messages, true);
+			throw UserRegistrationException.buildValidationError(messages);
 		}
 		try {
 			if (UserProfileStorageServiceImpl.getInstance().userIsAlreadyRegistred(userProfile)) {
-				throw UserRegistrationException.buildValidationError("A User with this e-mail address is already registred", Arrays.asList("A User with this e-mail address is already registred"));
+				throw UserRegistrationException.buildValidationError(Arrays.asList("A User with this e-mail address is already registred"));
 			}
-			userProfile.setRegistrationStatus(UserRegistrationStatus.REGISTRED);
+			userProfile.setRegistrationStatus(UserRegistrationStatus.REGISTERED);
 			String passwordHash = PasswordFactory.INSTANCE.generateStrongPasswordHash(userProfile.getPassword());
 			userProfile.setPasswordHash(passwordHash);
 			userProfile.initUnid();
@@ -63,16 +64,16 @@ public class UserRegistryImpl implements UserRegistry {
 		}
 		if (!StringUtil.isEmpty(userRegBean.getInvitationRole())) {
 			if (!context.getUser().getRoles().contains(userRegBean.getInvitationRole())) {
-				throw new UserRegistrationException("Access error", Arrays.asList("You are not allowed to invite a new User!"), true);
+				throw UserRegistrationException.buildValidationError(Arrays.asList("You are not allowed to invite a new User!"));
 			}
 		}
 		List<String> messages = UserProfileValidator.INSTNACE.validateInvitation(userProfile);
 		if (!messages.isEmpty()) {
-			throw new UserRegistrationException("Validation error", messages, true);
+			throw UserRegistrationException.buildValidationError(messages);
 		}
 		try {
 			if (UserProfileStorageServiceImpl.getInstance().userIsAlreadyRegistred(userProfile)) {
-				throw UserRegistrationException.buildValidationError("A User with this e-mail address is already registred", Arrays.asList("A User with this e-mail address is already registred"));
+				throw UserRegistrationException.buildValidationError(Arrays.asList("A User with this e-mail address is already registred"));
 			}
 			userProfile.setRegistrationStatus(UserRegistrationStatus.INVITED);
 			userProfile.initUnid();
@@ -85,21 +86,24 @@ public class UserRegistryImpl implements UserRegistry {
 	}
 
 	@Override
-	public void activateUser(String confirmationId, HttpServiceContext context) throws UserRegistrationException {
+	public UserProfile activateUser(String confirmationId, HttpServiceContext context) throws UserRegistrationException {
 		try {
 			UserProfile userProfile = UserProfileStorageServiceImpl.getInstance().getUserProfileByConfirmationId(confirmationId);
 			if (userProfile == null) {
-				throw UserRegistrationException.buildValidationError("No conformation open", Arrays.asList("No Conformation open"));
+				throw UserRegistrationException.buildValidationError(Arrays.asList("No Conformation open"));
 			}
-			if (userProfile.getRegistrationStatus() == UserRegistrationStatus.REGISTRED) {
+			if (userProfile.getRegistrationStatus() == UserRegistrationStatus.REGISTERED) {
 				userProfile.setRegistrationStatus(UserRegistrationStatus.ACTIVE);
 				userProfile.setConfirmationNumber("");
 				UserProfileStorageServiceImpl.getInstance().saveUserProfile(userProfile);
+				return userProfile;
 			} else {
-				throw UserRegistrationException.buildValidationError("User is not to activate", Arrays.asList("User is not to activate"));
+				throw UserRegistrationException.buildValidationError(Arrays.asList("User is not to activate"));
 			}
 		} catch (JsonException ex) {
 			throw UserRegistrationException.buildSystemError(ex);
+		} catch (IOException e) {
+			throw UserRegistrationException.buildSystemError(e);
 		}
 
 	}
@@ -110,7 +114,7 @@ public class UserRegistryImpl implements UserRegistry {
 			UserProfile myUserProfile = getMyUser(context);
 			List<String> messages = UserProfileValidator.INSTNACE.checkPasswordChange(profile, myUserProfile, validator);
 			if (!messages.isEmpty()) {
-				throw new UserRegistrationException("Validation error", messages, true);
+				throw UserRegistrationException.buildValidationError(messages);
 			}
 			String passwordHash = PasswordFactory.INSTANCE.generateStrongPasswordHash(profile.getPassword());
 			myUserProfile.setPasswordHash(passwordHash);
@@ -137,7 +141,7 @@ public class UserRegistryImpl implements UserRegistry {
 	@Override
 	public UserProfile getUserProfileById(String id, HttpServiceContext context) throws UserRegistrationException {
 		try {
-			return UserProfileStorageServiceImpl.getInstance().getUserProfileByUNID(id,null);
+			return UserProfileStorageServiceImpl.getInstance().getUserProfileByUNID(id, null);
 		} catch (JsonException e) {
 			throw UserRegistrationException.buildSystemError(e);
 		}

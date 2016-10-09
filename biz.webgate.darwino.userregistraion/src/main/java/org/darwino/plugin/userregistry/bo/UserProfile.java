@@ -13,7 +13,7 @@ import com.darwino.commons.serialize.annotations.SerializeScope;
 public class UserProfile extends PojoBaseImpl {
 
 	public enum UserRegistrationStatus {
-		ACTIVE, DEACTIVATED, INVITED, REGISTRED, ASK4PASSWORD, UNDEFINED
+		ACTIVE, DEACTIVATED, INVITED, REGISTERED, ASK4PASSWORD, UNDEFINED
 	};
 
 

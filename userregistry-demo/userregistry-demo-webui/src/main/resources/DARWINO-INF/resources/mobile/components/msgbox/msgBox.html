@@ -1,0 +1,11 @@
+<div class="list card" ng-show="vm.error != null">
+	<div class="item">
+		<h2 class="assertive">{{vm.error}}</h2>
+	</div>
+	<div class="item item-body energized" ng-repeat="msg in vm.messages">
+		<p>{{msg}}</p>
+	</div>
+	<div class="item item-body" ng-show="vm.type ==='SYSTEM'">
+		<p>{{vm.trace}}</p>
+	</div>
+</div>
