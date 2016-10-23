@@ -1,12 +1,14 @@
 package org.darwino.plugin.userregistry.dao;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.darwino.plugin.userregistry.UserProfileStorageService;
 import org.darwino.plugin.userregistry.bo.UserProfile;
 import org.darwino.plugin.userregistry.setup.DbSetup;
 
+import com.darwino.commons.json.JsonArray;
 import com.darwino.commons.json.JsonException;
 import com.darwino.commons.json.JsonObject;
 import com.darwino.jsonstore.Cursor;
@@ -30,6 +32,8 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	// registration.
 
 	private final static UserProfileStorageService m_Service = new UserProfileStorageServiceImpl();
+
+	private final static String[] SEARCH_ATTRIBUTES = { "firstname", "lastname", "email" };
 
 	public static UserProfileStorageService getInstance() {
 		return m_Service;
@@ -151,6 +155,43 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 	@Override
 	public String getStoreName() {
 		return DbSetup.UP_STORE;
+	}
+
+	@Override
+	public List<UserProfile> findUserByQuery(String query, int skip, int limit) throws JsonException, IOException {
+		String selection = buildQuery(query);
+		Database db = DbSetup.INSTANCE.getDatabase();
+
+		int maxResult = Math.max(skip, 0) + limit;
+		List<UserProfile> result = selectObject(db, selection, null, maxResult);
+		int todelete = Math.multiplyExact(skip, 0);
+		for (Iterator<UserProfile> it = result.iterator(); it.hasNext();) {
+			it.next();
+			if (todelete > 0) {
+				todelete--;
+				it.remove();
+			}
+		}
+		return result;
+	}
+
+	private String buildQuery(String query) throws JsonException, IOException {
+		JsonObject or = new JsonObject();
+		JsonArray orValues = new JsonArray();
+		for (String attr : SEARCH_ATTRIBUTES) {
+			JsonObject json = new JsonObject();
+			json.put("$contains_i", attr);
+			orValues.put(json);
+		}
+		or.put("$or", orValues);
+		JsonObject and = new JsonObject();
+		JsonArray andArray = new JsonArray();
+		JsonObject isActive = new JsonObject();
+		isActive.put( "registrationstatus", "ACTIVE");
+		andArray.add(or);
+		andArray.add(isActive);
+		and.put("$and", andArray);
+		return and.toJson();
 	}
 
 }

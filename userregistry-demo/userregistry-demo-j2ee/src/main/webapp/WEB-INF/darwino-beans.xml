@@ -26,4 +26,12 @@
 		<property name="databaseName">userregistrydemo</property>
 	</bean>
 
+	-
+	<bean alias="userregistrydemo" class="org.darwino.plugin.userregistry.j2ee.UserRegistrationDir"
+		name="userregDir" type="darwino/userdir">
+		<list name="providers">
+			<bean class="com.darwino.social.gravatar.GravatarUserProvider"
+				enabled="true" />
+		</list>
+	</bean>
 </beans>

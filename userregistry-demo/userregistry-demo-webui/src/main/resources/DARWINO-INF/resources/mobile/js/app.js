@@ -633,8 +633,20 @@ angular.module('app', ['ngSanitize','ionic', 'darwino.ionic', 'darwino.angular.j
 //
 //	Main controller for the whole page
 //
-.controller('MainCtrl', ['$scope','$http', function($scope,$http) {
+.controller('MainCtrl', ['$scope','$http','$ionicModal','$httpParamSerializerJQLike', '$window', function($scope,$http, $ionicModal,$httpParamSerializerJQLike, $window) {
 	var _appInfo = null;
+	$scope.data = {};
+	$scope.failure = null;
+	$scope.data.dwo_output_format='Json';
+	$ionicModal.fromTemplateUrl('templates/login.html', {
+	    scope: $scope,
+	    animation: 'slide-in-up'
+	  }).then(function(modal) {
+	    $scope.modal = modal;
+	  });
+	$scope.showLogin = function(){
+		$scope.modal.show();
+	}
 	$scope.getAppInformation = function() {
 		if(!_appInfo) {
 			_appInfo = "<Fetching Application Information>"
@@ -645,7 +657,26 @@ angular.module('app', ['ngSanitize','ionic', 'darwino.ionic', 'darwino.angular.j
 			$http.get(url).success(successCallback);
 		}
 		return _appInfo;
-	};	
+	};
+	$scope.doLogin = function () {
+		$scope.failure = null;
+		$http({
+			  url: '../dwo_auth_post',
+			  method: 'POST',
+			  data: $httpParamSerializerJQLike($scope.data),
+			  headers: {
+			    'Content-Type': 'application/x-www-form-urlencoded' // Note the appropriate header
+			  }
+			}).success(function(response) {
+				if (response.login === "success") {
+					$scope.modal.hide();
+					$window.location.reload();
+				}
+				console.dir(response);
+			}).error( function(error){
+				$scope.failure = error.failure;
+		})
+	}
 }])
 	
 

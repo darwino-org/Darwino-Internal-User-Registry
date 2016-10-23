@@ -11,6 +11,9 @@
 
 package org.darwino.plugin.userregistry.j2ee;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,7 @@ import org.darwino.plugin.userregistry.util.PasswordFactory;
 
 import com.darwino.commons.Platform;
 import com.darwino.commons.json.JsonException;
+import com.darwino.commons.security.acl.User;
 import com.darwino.commons.security.acl.UserAuthenticator;
 import com.darwino.commons.security.acl.UserException;
 import com.darwino.commons.security.acl.impl.UserImpl;
@@ -42,6 +46,10 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 	private String bean;
 
 	public class InternalUser extends UserImpl {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private UserProfile profile;
 
 		public InternalUser(UserProfile profile) {
@@ -50,8 +58,16 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 			attr.put(InternalUser.ATTR_DN, profile.getUnid());
 			attr.put(InternalUser.ATTR_CN, profile.getFirstName() + " " + profile.getLastName());
 			attr.put(InternalUser.ATTR_EMAIL, profile.getEmail());
-			setGroups(new HashSet<String>(profile.getGroups()));
-			setRoles(new HashSet<String>(profile.getRoles()));
+			if (profile.getGroups() != null) {
+				setGroups(new HashSet<String>(profile.getGroups()));
+			}
+			if (profile.getRoles() != null) {
+				setRoles(new HashSet<String>(profile.getRoles()));
+			}
+		}
+
+		public UserProfile getRegistryUserProfile() {
+			return profile;
 		}
 	}
 
@@ -80,7 +96,6 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 
 	@Override
 	protected UserImpl _findUser(String id) throws UserException {
-		String[] defGroup = { "Darwino" };
 		UserProfile up;
 		Session session = null;
 		try {
@@ -93,8 +108,7 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 				if (up == null) {
 					return null;
 				}
-				System.out.println("BuildUser");
-				return new UserImpl(up.getUnid(), up.getFirstName() + " " + up.getLastName(), defGroup, null);
+				return new InternalUser(up);
 			} catch (JsonException e) {
 				e.printStackTrace();
 			}
@@ -107,20 +121,59 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 	}
 
 	@Override
-	protected UserImpl _findUserByLoginId(String arg0) throws UserException {
-		// TODO SBA: What does loginId mean? email & unid are checked above, is
-		// this the confirmationID?
-		return null;
+	protected UserImpl _findUserByLoginId(String loginValue) throws UserException {
+		if (StringUtil.isEmpty(loginValue)) {
+			return null;
+		}
+		return _findUser(loginValue);
 	}
 
 	@Override
 	public List<Map<String, Object>> query(String query, String[] attributes, int skip, int limit, Map<String, Object> options) throws UserException {
-		return null;
+		List<UserProfile> profiles;
+		try {
+			profiles = UserProfileStorageServiceImpl.getInstance().findUserByQuery(query, skip, limit);
+		} catch (JsonException e) {
+			throw new UserException(e);
+		} catch (IOException e) {
+			throw new UserException(e);
+		}
+		String[] intAttributes = attributes;
+		if (attributes == null || attributes.length == 0) {
+			intAttributes = UserDir.DEFAULT_SEARCH_ATTRIBUTES;
+		}
+		return buildListMap(profiles, intAttributes);
+	}
+
+	private List<Map<String, Object>> buildListMap(List<UserProfile> profiles, String[] attributes) {
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		for (UserProfile profile : profiles) {
+			Map<String, Object> values = new HashMap<String, Object>();
+			InternalUser us = new InternalUser(profile);
+			values.put(User.ATTR_DN, us.getDn());
+			for (String attr : attributes) {
+				values.put(attr, us.getAttribute(attr));
+			}
+			result.add(values);
+		}
+		return result;
 	}
 
 	@Override
 	public List<Map<String, Object>> typeAhead(String query, String[] attributes, int skip, int limit, Map<String, Object> options) throws UserException {
-		return null;
+		List<UserProfile> profiles;
+		try {
+			profiles = UserProfileStorageServiceImpl.getInstance().findUserByQuery(query, skip, limit);
+		} catch (JsonException e) {
+			throw new UserException(e);
+		} catch (IOException e) {
+			throw new UserException(e);
+		}
+		String[] intAttributes = attributes;
+		if (attributes == null || attributes.length == 0) {
+			intAttributes = UserDir.DEFAULT_SEARCH_ATTRIBUTES;
+		}
+		return buildListMap(profiles, intAttributes);
 	}
 
 	@Override
@@ -136,7 +189,6 @@ public class UserRegistrationDir extends UserDir implements UserAuthenticator {
 				if (up == null) {
 					return null;
 				}
-				System.out.println("USER FOUND");
 				if (PasswordFactory.INSTANCE.validatePassword(password, up.getPasswordHash())) {
 					return up.getUnid();
 				}
