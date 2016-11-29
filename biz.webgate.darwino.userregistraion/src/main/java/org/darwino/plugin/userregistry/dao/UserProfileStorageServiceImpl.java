@@ -164,7 +164,7 @@ public class UserProfileStorageServiceImpl extends AbstractPojoStorageService<Us
 
 		int maxResult = Math.max(skip, 0) + limit;
 		List<UserProfile> result = selectObject(db, selection, null, maxResult);
-		int todelete = Math.multiplyExact(skip, 0);
+		int todelete = Math.max(skip, 0);
 		for (Iterator<UserProfile> it = result.iterator(); it.hasNext();) {
 			it.next();
 			if (todelete > 0) {
