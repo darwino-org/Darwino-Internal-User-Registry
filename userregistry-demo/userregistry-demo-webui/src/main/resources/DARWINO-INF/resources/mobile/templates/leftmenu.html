@@ -20,7 +20,6 @@
 			</div>
 		</ion-header-bar>
 		<ion-content class="has-expanded-header scroll-content ionic-scroll has-header">
-			<a ng-click="showLogin()">Log me in</a>
 			<br/>
 			<ul class="list animate-rip">
 				<a href="#/app/home" class="item item-icon-left {{isState('app.home')?'item-selected':''}}" menu-close>
@@ -42,11 +41,19 @@
 					<span class='count'>&nbsp;&nbsp;{{isState('app.views',{view:'byauthor'})||isState('app.author')?entries.getEntriesCount():''}}</span>
 				</a>
 			</ul>
+			<div class="item item-divider">
+					Profile
+			</div>
+
+			<ul class="list animate-rip" ng-show="isAnonymous()">
+				<a ng-click="showLogin()" class="item item-icon-left" menu-close>
+					<i class="icon ion-log-in"></i>
+					Log me in
+				</a>
+			</ul>
+
 	
 			<div ng-show="darwino.hybrid.isHybrid()">
-				<div class="item item-divider">
-					Data Synchronization
-				</div>
 				<ul class="list animate-rip">
 					<a class="item item-icon-left item-icon-right" ng-click="darwino.hybrid.switchToRemote()">
 						<i class="icon ion-cloud"></i>
